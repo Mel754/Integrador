@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar Sesión</title>
+<style>
+/* Reset y tipografía */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #92a3b6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Caja del login */
+.login-container {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    width: 400px;
+    text-align: center;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Logo y título */
+.login-container h2 {
+    color: #2c5282;
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Inputs */
+.login-container input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.login-container input:focus {
+    border-color: #2c5282;
+    box-shadow: 0 0 8px rgba(44,82,130,0.3);
+    outline: none;
+}
+
+/* Botón */
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 25px;
+    background: #2c5282;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-container button:hover {
+    background: #3b6fb0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(44,82,130,0.3);
+}
+
+/* Enlace */
+.login-container a {
+    display: block;
+    margin-top: 15px;
+    color: #2c5282;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.login-container a:hover {
+    color: #3b6fb0;
+}
+
+#message {
+    margin-top: 10px;
+    font-weight: 500;
+}
+</style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm">
+        <input type="text" placeholder="Usuario" id="username" required>
+        <input type="password" placeholder="Contraseña" id="password" required>
+        <button type="submit">Entrar</button>
+    </form>
+
+    <p id="message"></p>
+
+    <a href="#">¿Olvidaste tu contraseña?</a>
+</div>
+
+<script>
+const form = document.getElementById('loginForm');
+const message = document.getElementById('message');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        });
+        const data = await response.json();
+        if (response.ok) {
+            message.style.color = 'green';
+            message.textContent = '¡Login exitoso!';
+            
+        } else {
+            message.style.color = 'red';
+            message.textContent = data.message || 'Error en login';
+        }
+    } catch (error) {
+        message.style.color = 'red';
+        message.textContent = 'No se pudo conectar al servidor';
+        console.error(error);
+    }
+});
+</script>
+
+</body>
+</html>
