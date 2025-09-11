@@ -409,18 +409,55 @@
             color: #333;
         }
 
-        /* Modal */
-.modal {
+      .modal {
+    display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background-color: rgba(0,0,0,0.5);
-    display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+}
+
+.cerrar {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content input,
+.modal-content textarea {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.modal-content button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.modal-content button:hover {
+  background-color: #0056b3;
 }
 
 .modal-content {
@@ -531,12 +568,11 @@
                 </div>
 
                 <div class="quick-access">
-                    <h2>Acceso rápido</h2>
-                    <button>Ver proyectos</button>
-                    <button>Ver reporte</button>
-                    <button>Crear proyecto</button>
-                    <button>Gestionar usuarios</button>
-                </div>
+    <h2>Acceso rápido</h2>
+    <button onclick="mostrarSeccion('proyectos')">Ver proyectos</button>
+    <button onclick="abrirModalProyecto()">Crear proyecto</button>
+</div>
+
             </div>
         </div>
 
@@ -635,7 +671,7 @@
                     </tbody>
                 </table>
             </div>
-
+        
             <!-- Formulario para nuevo proyecto -->
             <h2>Crear nuevo Proyecto:</h2>
             <div class="form-proyecto">
@@ -662,7 +698,6 @@
             </div>
         </div>
 
-        
         <!-- Sección Servicios -->
         <div id="servicios" class="contenido" style="display:none;">
             <h1>Gestión de Servicios</h1>
@@ -714,7 +749,7 @@
             <!-- Seguridad -->
             <div class="perfil-section">
                 <h3>Seguridad</h3>
-                <button class="security-btn">Cambiar contraseña</button>
+                <button class="security-btn" onclick="abrirModalPassword()">Cambiar contraseña</button>
             </div>
 
             <!-- Estadísticas personales -->
@@ -739,7 +774,7 @@
         <!-- ===== NUEVO: MODAL CAMBIAR CONTRASEÑA ===== -->
 <div id="modal-pass" class="modal" style="display:none;">
     <div class="modal-content">
-        <span class="close" onclick="cerrarModal()">&times;</span>
+        <span class="close" onclick="cerrarModalPassword()">&times;</span>
         <h2>Cambiar Contraseña</h2>
         <div class="perfil-form">
             <div class="form-field">
@@ -756,6 +791,29 @@
             </div>
             <button class="security-btn" onclick="cambiarContraseña()">Guardar cambios</button>
         </div>
+    </div>
+</div>
+
+<!-- Modal para crear proyecto -->
+<div id="modalProyecto" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModalProyecto()">&times;</span>
+        <h2>Crear Proyecto</h2>
+        <form id="formCrearProyecto">
+            <label for="nombreProyecto">Nombre del proyecto:</label>
+            <input type="text" id="nombreProyecto" name="nombreProyecto" required>
+
+            <label for="descripcionProyecto">Descripción:</label>
+            <textarea id="descripcionProyecto" name="descripcionProyecto" required></textarea>
+
+            <label for="fechaInicio">Fecha de inicio:</label>
+            <input type="date" id="fechaInicio" name="fechaInicio" required>
+
+            <label for="fechaFin">Fecha de finalización:</label>
+            <input type="date" id="fechaFin" name="fechaFin" required>
+
+            <button type="submit">Guardar</button>
+        </form>
     </div>
 </div>
 
@@ -789,33 +847,6 @@
                 alert("Por favor, escribe un nombre antes de agregar.");
             }
         }
-        // ===== JS MODAL CAMBIO CONTRASEÑA =====
-document.querySelector(".security-btn").addEventListener("click", () => {
-    document.getElementById("modal-pass").style.display = "flex";
-});
-
-function cerrarModal() {
-    document.getElementById("modal-pass").style.display = "none";
-}
-
-function cambiarContraseña() {
-    const current = document.getElementById("current-pass").value;
-    const nuevo = document.getElementById("new-pass").value;
-    const confirm = document.getElementById("confirm-pass").value;
-
-    if (!current || !nuevo || !confirm) {
-        alert("Por favor completa todos los campos.");
-        return;
-    }
-
-    if (nuevo !== confirm) {
-        alert("La nueva contraseña y la confirmación no coinciden.");
-        return;
-    }
-
-    alert("Contraseña cambiada exitosamente!");
-    cerrarModal();
-}
 function cambiarContraseña() {
         const current = document.getElementById("current-pass").value;
         const nuevo = document.getElementById("new-pass").value;
@@ -860,6 +891,86 @@ function cambiarContraseña() {
         setTimeout(() => {
             location.reload();
         }, 1000);
+    }
+
+      // Generar ID automático
+    function generarID() {
+        const id = "PRJ-" + Math.floor(Math.random() * 1000).toString().padStart(3, "0");
+        document.getElementById("id-proyecto").value = id;
+    }
+    window.onload = generarID;
+
+    // Abrir/cerrar historial
+    function mostrarHistorial() {
+        document.getElementById("modal-historial").style.display = "block";
+    }
+    function cerrarHistorial() {
+        document.getElementById("modal-historial").style.display = "none";
+    }
+
+    // Abrir/cerrar tareas
+    function abrirTareas(nombreProyecto) {
+        document.getElementById("modal-tareas").style.display = "block";
+    }
+    function cerrarTareas() {
+        document.getElementById("modal-tareas").style.display = "none";
+    }
+    function agregarTarea() {
+        const lista = document.getElementById("lista-tareas");
+        const nueva = document.getElementById("nueva-tarea").value;
+        if(nueva.trim() !== "") {
+            const li = document.createElement("li");
+            li.textContent = nueva;
+            lista.appendChild(li);
+            document.getElementById("nueva-tarea").value = "";
+        }
+    }
+    function guardarProyecto(event) {
+        event.preventDefault();
+        alert("Proyecto guardado con ID " + document.getElementById("id-proyecto").value);
+        generarID(); // genera un nuevo ID para el próximo proyecto
+    }
+    function abrirModalPassword() {
+    document.getElementById("modal-pass").style.display = "flex";
+}
+
+function cerrarModalPassword() {
+    document.getElementById("modal-pass").style.display = "none";
+}
+function abrirModalProyecto() {
+    document.getElementById("modalProyecto").style.display = "flex";
+}
+
+function cerrarModalProyecto() {
+    document.getElementById("modalProyecto").style.display = "none";
+}
+document.getElementById("formCrearProyecto").addEventListener("submit", function(e){
+    e.preventDefault();
+    const nombre = document.getElementById("nombreProyecto").value;
+    const descripcion = document.getElementById("descripcionProyecto").value;
+    
+    alert("Proyecto creado exitosamente:\n" + 
+          "Nombre: " + nombre + "\n" +
+          "Descripción: " + descripcion);
+    
+    document.getElementById("formCrearProyecto").reset();
+    cerrarModalProyecto();
+});
+
+ function abrirModalProyecto() {
+        document.getElementById("modalProyecto").style.display = "flex";
+    }
+
+    function cerrarModalProyecto() {
+        document.getElementById("modalProyecto").style.display = "none";
+    }
+
+    // Cierra modal si el usuario hace clic fuera del contenido
+    window.onclick = function(event) {
+        const modal = document.getElementById("modalProyecto");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
     }
     </script>
 
