@@ -1,84 +1,53 @@
-/* ===== Estilos globales ===== */
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
   margin: 0;
   padding: 0;
-  background: #f0f4f8;
-  color: #2c3e50;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 h1 {
   text-align: center;
-  background: #2c3e50;
-  color: white;
-  padding: 20px;
-  margin: 0;
-  font-size: 28px;
-  letter-spacing: 1px;
+  color: #2c3e50;
 }
 
 h2 {
+  margin-top: 20px;
   color: #34495e;
-  margin-bottom: 10px;
-  font-size: 20px;
 }
 
-/* ===== Secciones (tarjetas) ===== */
-section {
-  background: white;
-  padding: 20px;
-  margin: 20px auto;
-  border-radius: 10px;
-  max-width: 700px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
+form, section {
+  margin-bottom: 20px;
 }
 
-section:hover {
-  transform: scale(1.01);
-}
-
-/* ===== Inputs y botones ===== */
-input {
-  padding: 10px;
-  margin: 5px;
-  width: calc(50% - 12px);
-  border: 1px solid #bdc3c7;
+input, button {
+  padding: 8px 12px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
   border-radius: 5px;
 }
 
 button {
-  padding: 10px 20px;
-  margin: 5px 0;
   background: #3498db;
   color: white;
   border: none;
-  border-radius: 6px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease-in-out;
 }
 
 button:hover {
   background: #2980b9;
 }
 
-/* ===== Resultados ===== */
-p {
-  margin-top: 10px;
-  font-size: 16px;
-}
-
-ul {
-  margin-top: 10px;
-  padding-left: 20px;
-}
-
-pre {
-  background: #f4f6f8;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 14px;
-  overflow-x: auto;
-  border: 1px solid #ddd;
+#logs {
+  background: #ecf0f1;
+  padding: 10px;
+  border-radius: 5px;
 }

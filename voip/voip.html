@@ -2,205 +2,154 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Proyecto VoIP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulación VoIP</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Implementación de VoIP</h1>
+  <div class="container">
+    <h1>Simulación de Funcionalidades VoIP</h1>
+    <p>Este simulador muestra todas las funcionalidades solicitadas en las tareas de VoIP.</p>
 
-  <!-- 8.01 Instalar servidor -->
-  <section>
-    <h2>8.01 Instalar servidor o central VoIP</h2>
-    <button onclick="instalarServidor()">Instalar servidor</button>
-    <p id="servidor-msg"></p>
-  </section>
+    <!-- TAREA 1: Asignar contraseñas seguras -->
+    <section>
+      <h2>Asignar contraseñas seguras a extensiones</h2>
+      <form id="passwordForm">
+        <input type="text" id="extension" placeholder="Número de extensión" required>
+        <input type="password" id="password" placeholder="Contraseña segura" required>
+        <button type="submit">Asignar</button>
+      </form>
+      <p id="passwordMsg"></p>
+    </section>
 
-  <!-- 8.02 Configurar extensiones -->
-  <section>
-    <h2>8.02 Configurar extensiones para usuarios internos</h2>
-    <form onsubmit="configurarExtension(event)">
-      <input type="text" id="usuario" placeholder="Nombre de usuario" required>
-      <input type="text" id="ext" placeholder="Extensión" required>
-      <button type="submit">Registrar</button>
-    </form>
-    <ul id="lista-extensiones"></ul>
-  </section>
+    <!-- TAREA 2: Restricción de llamadas internacionales -->
+    <section>
+      <h2>Restringir llamadas internacionales</h2>
+      <input type="text" id="numeroLlamada" placeholder="Número a marcar">
+      <button onclick="restringirLlamada()">Probar llamada</button>
+      <p id="restriccionMsg"></p>
+    </section>
 
-  <!-- 8.03 Contraseñas seguras -->
-  <section>
-    <h2>8.03 Asignar contraseñas seguras</h2>
-    <input type="text" id="ext-pass" placeholder="Extensión">
-    <button onclick="generarContrasena()">Generar contraseña</button>
-    <p id="pass-msg"></p>
-  </section>
+    <!-- TAREA 3: Bloqueo de intentos fallidos -->
+    <section>
+      <h2>Bloquear intentos fallidos de autenticación</h2>
+      <input type="text" id="usuarioLogin" placeholder="Usuario">
+      <input type="password" id="claveLogin" placeholder="Contraseña">
+      <button onclick="login()">Iniciar sesión</button>
+      <p id="loginMsg"></p>
+    </section>
 
-  <!-- 8.04 Probar registro -->
-  <section>
-    <h2>8.04 Probar registro de extensiones</h2>
-    <input type="text" id="ext-reg" placeholder="Extensión">
-    <button onclick="probarRegistro()">Probar</button>
-    <p id="registro-msg"></p>
-  </section>
+    <!-- US-80.01 Configurar troncales -->
+    <section>
+      <h2>US-80.01 Configurar troncales de VoIP seguras</h2>
+      <form id="troncalesForm">
+        <input type="text" placeholder="IP del servidor" required>
+        <input type="text" placeholder="Puerto (ej: 5060)" required>
+        <button type="submit">Configurar</button>
+      </form>
+      <p id="troncalesMsg"></p>
+    </section>
 
-  <!-- 8.05 Calidad de audio -->
-  <section>
-    <h2>8.05 Validar calidad de audio</h2>
-    <button onclick="calidadAudio()">Medir calidad</button>
-    <p id="audio-msg"></p>
-  </section>
+    <!-- US-80.02 Validar autenticación -->
+    <section>
+      <h2>US-80.02 Validar autenticación entre sedes</h2>
+      <button onclick="validarAuth()">Validar autenticación</button>
+      <p id="authMsg"></p>
+    </section>
 
-  <!-- 8.06 Activar cifrado -->
-  <section>
-    <h2>8.06 Activar cifrado SRTP/TLS</h2>
-    <button onclick="activarCifrado()">Activar cifrado</button>
-    <p id="cifrado-msg"></p>
-  </section>
+    <!-- US-80.03 Probar llamadas -->
+    <section>
+      <h2>US-80.03 Probar llamadas con asociados externos</h2>
+      <input type="text" id="numeroDestino" placeholder="Número del asociado">
+      <button onclick="probarLlamada()">Llamar</button>
+      <p id="llamadaMsg"></p>
+    </section>
 
-  <!-- 8.07 Habilitar logs -->
-  <section>
-    <h2>8.07 Habilitar logs</h2>
-    <button onclick="mostrarLogs()">Ver logs</button>
-    <pre id="logs"></pre>
-  </section>
+    <!-- US-80.04 Activar cifrado -->
+    <section>
+      <h2>US-80.04 Activar cifrado de extremo a extremo</h2>
+      <button onclick="activarCifrado()">Activar cifrado</button>
+      <p id="cifradoMsg"></p>
+    </section>
 
-  <!-- 9.01 Probar llamadas -->
-  <section>
-    <h2>9.01 Probar llamadas entre extensiones</h2>
-    <input type="text" id="ext1" placeholder="Extensión origen">
-    <input type="text" id="ext2" placeholder="Extensión destino">
-    <button onclick="probarLlamada()">Llamar</button>
-    <p id="llamada-msg"></p>
-  </section>
-
-  <!-- 9.02 Medir latencia -->
-  <section>
-    <h2>9.02 Medir latencia</h2>
-    <button onclick="medirLatencia()">Medir</button>
-    <p id="latencia-msg"></p>
-  </section>
-
-  <!-- 9.03 Validar disponibilidad -->
-  <section>
-    <h2>9.03 Validar disponibilidad</h2>
-    <button onclick="validarDisponibilidad()">Verificar</button>
-    <p id="disp-msg"></p>
-  </section>
-
-  <!-- 9.04 Dispositivos -->
-  <section>
-    <h2>9.04 Validar funcionamiento en dispositivos</h2>
-    <button onclick="validarDispositivos()">Probar dispositivos</button>
-    <p id="disp2-msg"></p>
-  </section>
-
-  <!-- 9.05 Ancho de banda -->
-  <section>
-    <h2>9.05 Medir ancho de banda</h2>
-    <button onclick="anchoBanda()">Medir</button>
-    <p id="banda-msg"></p>
-  </section>
-
-  <!-- 9.06 Llamadas simultáneas -->
-  <section>
-    <h2>9.06 Realizar llamadas simultáneas</h2>
-    <button onclick="llamadasSimultaneas()">Iniciar prueba</button>
-    <p id="sim-msg"></p>
-  </section>
-
-  <!-- 9.07 Métricas -->
-  <section>
-    <h2>9.07 Medir métricas de calidad</h2>
-    <button onclick="medirMetricas()">Generar métricas</button>
-    <pre id="metricas"></pre>
-  </section>
+    <!-- US-80.05 Registrar llamadas -->
+    <section>
+      <h2>US-80.05 Registrar llamadas externas en logs</h2>
+      <button onclick="registrarLlamada()">Registrar última llamada</button>
+      <ul id="logs"></ul>
+    </section>
+  </div>
 
   <script>
-    function instalarServidor() {
-      document.getElementById("servidor-msg").innerText = "✅ Servidor VoIP instalado correctamente.";
-    }
+    // --- TAREA 1 ---
+    document.getElementById("passwordForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const ext = document.getElementById("extension").value;
+      document.getElementById("passwordMsg").innerText = "Contraseña asignada correctamente a la extensión " + ext + " ✅";
+    });
 
-    function configurarExtension(event) {
-      event.preventDefault();
-      const usuario = document.getElementById("usuario").value;
-      const ext = document.getElementById("ext").value;
-      const lista = document.getElementById("lista-extensiones");
-      const li = document.createElement("li");
-      li.textContent = `👤 ${usuario} → Extensión ${ext}`;
-      lista.appendChild(li);
-      event.target.reset();
-    }
-
-    function generarContrasena() {
-      const ext = document.getElementById("ext-pass").value;
-      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
-      let pass = "";
-      for (let i = 0; i < 12; i++) {
-        pass += chars.charAt(Math.floor(Math.random() * chars.length));
+    // --- TAREA 2 ---
+    function restringirLlamada() {
+      const numero = document.getElementById("numeroLlamada").value;
+      if (numero.startsWith("+")) {
+        document.getElementById("restriccionMsg").innerText = "Llamada internacional bloqueada ❌";
+      } else {
+        document.getElementById("restriccionMsg").innerText = "Llamada permitida ✅";
       }
-      document.getElementById("pass-msg").innerText = `Extensión ${ext} → Contraseña: ${pass}`;
     }
 
-    function probarRegistro() {
-      const ext = document.getElementById("ext-reg").value;
-      document.getElementById("registro-msg").innerText = `📡 Extensión ${ext} registrada exitosamente.`;
+    // --- TAREA 3 ---
+    let intentosFallidos = 0;
+    function login() {
+      const usuario = document.getElementById("usuarioLogin").value;
+      const clave = document.getElementById("claveLogin").value;
+
+      if (usuario === "admin" && clave === "1234") {
+        document.getElementById("loginMsg").innerText = "Acceso concedido ✅";
+        intentosFallidos = 0;
+      } else {
+        intentosFallidos++;
+        if (intentosFallidos >= 3) {
+          document.getElementById("loginMsg").innerText = "Usuario bloqueado por intentos fallidos 🚫";
+        } else {
+          document.getElementById("loginMsg").innerText = "Credenciales incorrectas. Intento " + intentosFallidos;
+        }
+      }
     }
 
-    function calidadAudio() {
-      const opciones = ["Excelente", "Buena", "Regular", "Mala"];
-      const random = opciones[Math.floor(Math.random() * opciones.length)];
-      document.getElementById("audio-msg").innerText = `🔊 Calidad de audio: ${random}`;
+    // --- US-80.01 ---
+    document.getElementById("troncalesForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("troncalesMsg").innerText = "Troncal configurada correctamente ✅";
+    });
+
+    // --- US-80.02 ---
+    function validarAuth() {
+      document.getElementById("authMsg").innerText = "Autenticación entre sedes validada correctamente 🔐";
     }
 
-    function activarCifrado() {
-      document.getElementById("cifrado-msg").innerText = "🔒 Cifrado SRTP/TLS activado correctamente.";
-    }
-
-    function mostrarLogs() {
-      const logs = [
-        "[INFO] Servidor iniciado",
-        "[INFO] Extensión 1001 registrada",
-        "[INFO] Extensión 1002 registrada",
-        "[WARN] Latencia detectada en llamada"
-      ];
-      document.getElementById("logs").innerText = logs.join("\n");
-    }
-
+    // --- US-80.03 ---
     function probarLlamada() {
-      const e1 = document.getElementById("ext1").value;
-      const e2 = document.getElementById("ext2").value;
-      document.getElementById("llamada-msg").innerText = `📞 Llamada de ${e1} a ${e2} establecida correctamente.`;
+      const numero = document.getElementById("numeroDestino").value;
+      if (numero.trim() === "") {
+        document.getElementById("llamadaMsg").innerText = "Por favor ingresa un número válido.";
+      } else {
+        document.getElementById("llamadaMsg").innerText = "Llamando a " + numero + " ... 📞";
+      }
     }
 
-    function medirLatencia() {
-      const ms = Math.floor(Math.random() * 100) + 20;
-      document.getElementById("latencia-msg").innerText = `⏱️ Latencia: ${ms} ms`;
+    // --- US-80.04 ---
+    function activarCifrado() {
+      document.getElementById("cifradoMsg").innerText = "Cifrado de extremo a extremo activado 🔒";
     }
 
-    function validarDisponibilidad() {
-      document.getElementById("disp-msg").innerText = "✅ Todos los servicios están disponibles.";
-    }
-
-    function validarDispositivos() {
-      document.getElementById("disp2-msg").innerText = "📱 Extensiones funcionan en PC, móvil y softphone.";
-    }
-
-    function anchoBanda() {
-      const mb = (Math.random() * 5 + 1).toFixed(2);
-      document.getElementById("banda-msg").innerText = `📡 Ancho de banda utilizado: ${mb} Mbps`;
-    }
-
-    function llamadasSimultaneas() {
-      const num = Math.floor(Math.random() * 10) + 1;
-      document.getElementById("sim-msg").innerText = `📞 ${num} llamadas simultáneas realizadas correctamente.`;
-    }
-
-    function medirMetricas() {
-      const metricas = {
-        jitter: (Math.random() * 5).toFixed(2) + " ms",
-        perdida: (Math.random() * 2).toFixed(2) + " %",
-        mos: (Math.random() * 2 + 3).toFixed(2) + "/5"
-      };
-      document.getElementById("metricas").innerText = JSON.stringify(metricas, null, 2);
+    // --- US-80.05 ---
+    function registrarLlamada() {
+      const numero = document.getElementById("numeroDestino").value || "Número desconocido";
+      const logs = document.getElementById("logs");
+      const li = document.createElement("li");
+      li.textContent = "Llamada registrada a: " + numero + " (" + new Date().toLocaleString() + ")";
+      logs.appendChild(li);
     }
   </script>
 </body>
