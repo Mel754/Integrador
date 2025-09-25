@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -46,7 +46,6 @@
         }
         .main h1 {
             margin-bottom: 20px;
-    
         }
         /* Cards */
         .cards {
@@ -183,7 +182,6 @@
             border-radius: 6px;
             border: 1px solid #ccc;
         }
-
         /* ===== ESTILOS NUEVOS ===== */
         .filtros {
             display: flex;
@@ -210,14 +208,12 @@
         .buscador {
             margin-bottom: 15px;
         }
-
         .buscador input {
             width: 100%;
             padding: 10px;
             border-radius: 10px;
             border: 1px solid #ccc;
         }
-
         /* Progreso como línea */
         .progress-line {
             width: 100%;
@@ -226,7 +222,6 @@
             border-radius: 5px;
             overflow: hidden;
         }
-
         .progress-line span {
             display: block;
             height: 100%;
@@ -297,11 +292,6 @@
             flex-direction: column;
             gap: 15px;
         }
-        #perfil {
-            width: 200%;
-            max-width: 1200px;
-            margin: 0;
-        }
 
         .form-row {
             display: flex;
@@ -320,7 +310,7 @@
             color: #333;
         }
 
-        .form-field input {
+        .form-field input, .form-field select {
             width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
@@ -345,7 +335,7 @@
             color: #2c3a70;
         }
 
-        .security-btn {
+        .security-btn, .btn-agregar {
             background-color: #4a5d9a;
             color: white;
             border: none;
@@ -355,7 +345,7 @@
             font-weight: bold;
         }
 
-        .security-btn:hover {
+        .security-btn:hover, .btn-agregar:hover {
             background-color: #2c3a70;
         }
 
@@ -386,12 +376,13 @@
             font-weight: bold;
             color: #333;
         }
-
-      .modal {
+        .modal {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
     background-color: rgba(0,0,0,0.5);
     justify-content: center;
     align-items: center;
@@ -399,11 +390,12 @@
 }
 
 .modal-content {
-    background: white;
+    background-color: #f0f2f7;
     padding: 20px;
     border-radius: 10px;
     width: 400px;
     max-width: 90%;
+    position: relative;
 }
 
 .cerrar {
@@ -457,17 +449,7 @@
 .close:hover {
     color: #2c3a70;
 }
-#servicios {
-    background-color: #f0f2f7;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-}
-#servicios h1 {
-    margin-bottom: 20px;
-    color: #333;
-}
+
 .servicio-card {
     background-color: #ffffff;
     border-radius: 10px;
@@ -509,9 +491,145 @@
 .servicio-card button:hover {
     background-color: #2c3a70;
 }
+ /* Formulario para agregar hitos */
+        .form-hito {
+            background-color: #f0f2f7;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
 
+        /* Diagrama de Gantt */
+        .gantt-container {
+            margin-top: 30px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
 
-    </style>
+        .gantt-chart {
+            min-width: 800px;
+            background: white;
+        }
+
+        .gantt-header {
+            display: flex;
+            border-bottom: 2px solid #4a5d9a;
+            background-color: #f8f9fa;
+        }
+
+        .gantt-task-header {
+            width: 200px;
+            padding: 15px;
+            font-weight: bold;
+            text-align: center;
+            border-right: 1px solid #ddd;
+            background-color: #4a5d9a;
+            color: white;
+        }
+
+        .gantt-dates-header {
+            flex: 1;
+            display: flex;
+            background-color: #4a5d9a;
+        }
+
+        .gantt-date {
+            flex: 1;
+            padding: 15px 5px;
+            text-align: center;
+            border-right: 1px solid #ddd;
+            color: white;
+            font-size: 12px;
+            min-width: 60px;
+        }
+
+        .gantt-row {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            min-height: 50px;
+            align-items: center;
+        }
+
+        .gantt-row:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+         .gantt-task-name {
+    width: 200px;
+    padding: 15px;
+    border-right: 1px solid #ddd;
+    font-weight: 500;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gantt-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-edit, .btn-delete {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.btn-edit:hover {
+    background-color: #e0a800;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+.gantt-timeline {
+    flex: 1;
+    display: flex;
+    position: relative;
+    height: 50px;
+}
+
+.gantt-bar {
+    height: 25px;
+    background-color: #dc3545;
+    border-radius: 4px;
+    margin: 12.5px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.gantt-grid-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-right: 1px solid #eee;
+    z-index: 1;
+}
+
+.estado-completado { background-color: #28a745; }
+.estado-progreso { background-color: #ffc107; }
+.estado-pendiente { background-color: #6c757d; }
+.estado-retrasado { background-color: #dc3545; }
+</style>
 </head>
 <body>
     <div class="sidebar">
@@ -521,39 +639,26 @@
         <a href="#" onclick="mostrarSeccion('servicios')">Servicios</a>
         <a href="#" onclick="mostrarSeccion('perfil')">Perfil</a>
     </div>
-
     <div class="main">
-
-        <!-- Sección Inicio -->
+        <!-- Inicio -->
         <div id="inicio" class="contenido">
             <h1>Panel de control</h1>
-
-            <!-- Cards -->
             <div class="cards">
                 <div class="card">
-                    <h2>19</h2>
-                    <p>Proyectos Activos</p>
+                    <h2>19</h2><p>Proyectos Activos</p>
                 </div>
                 <div class="card">
-                    <h2>155</h2>
-                    <p>Usuarios Totales</p>
+                    <h2>155</h2><p>Usuarios Totales</p>
                 </div>
                 <div class="card">
-                    <h2>5</h2>
-                    <p>Servicios</p>
+                    <h2>5</h2><p>Servicios</p>
                 </div>
             </div>
-
-            <!-- Tabla -->
             <h2>Gestión de usuarios</h2>
             <div class="table-container">
                 <table>
                     <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Rol</th>
-                            <th>Estado</th>
-                        </tr>
+                        <tr><th>Nombre</th><th>Rol</th><th>Estado</th></tr>
                     </thead>
                     <tbody>
                         <tr><td>Harry Styles</td><td>Usuario</td><td>Activo</td></tr>
@@ -567,134 +672,83 @@
                     </tbody>
                 </table>
             </div>
-
-            <!-- Activity & Quick Access -->
             <div class="section">
                 <div class="activity">
                     <h2>Actividad reciente</h2>
                     <div class="activity-item" onclick="mostrarDetalles('Nuevo proyecto creado')">
                         <div class="activity-main">
-                            <span class="activity-text">Nuevo proyecto creado</span>
-                            <span class="activity-time">Hace 20 min</span>
+                            <span class="activity-text">Nuevo proyecto creado</span><span class="activity-time">Hace 20 min</span>
                         </div>
                         <div class="activity-details">Ver detalles</div>
                     </div>
                     <div class="activity-item" onclick="mostrarDetalles('Nuevo usuario registrado')">
                         <div class="activity-main">
-                            <span class="activity-text">Nuevo usuario registrado</span>
-                            <span class="activity-time">Hace 50 min</span>
+                            <span class="activity-text">Nuevo usuario registrado</span><span class="activity-time">Hace 50 min</span>
                         </div>
                         <div class="activity-details">Ver detalles</div>
                     </div>
                     <div class="activity-item" onclick="mostrarDetalles('Servicio reservado')">
                         <div class="activity-main">
-                            <span class="activity-text">Nuevo servicio reservado</span>
-                            <span class="activity-time">Hace 1 hora</span>
+                            <span class="activity-text">Nuevo servicio reservado</span><span class="activity-time">Hace 1 hora</span>
                         </div>
                         <div class="activity-details">Ver detalles</div>
                     </div>
                 </div>
                 <div class="quick-access">
-    <h2>Acceso rápido</h2>
-    <button onclick="mostrarSeccion('proyectos')">Ver proyectos</button>
-    <button onclick="abrirModalProyecto()">Crear proyecto</button>
-</div>
+                    <h2>Acceso rápido</h2>
+                    <button onclick="mostrarSeccion('proyectos')">Ver proyectos</button>
+                    <button onclick="abrirModalProyecto()">Crear proyecto</button>
+                </div>
             </div>
         </div>
-        <!-- Sección Proyectos -->
+        
+        <!--Proyectos-->
         <div id="proyectos" class="contenido" style="display:none;">
             <h1>Gestión de Proyectos</h1>
-            <!-- Filtros -->
             <div class="filtros">
-                <button>Todos</button>
-                <button>Activos</button>
-                <button>Pendientes</button>
+                <button>Todos</button><button>Activos</button><button>Pendientes</button>
             </div>
-            <!-- Buscador -->
             <div class="buscador">
                 <input type="text" placeholder="Buscar por nombre, descripción o miembro del equipo">
             </div>
-
-            <!-- Tabla de proyectos -->
             <div class="table-container">
                 <table>
                     <thead>
-                        <tr>
-                            <th>Nombre del proyecto</th>
-                            <th>Estado</th>
-                            <th>Miembros del equipo</th>
-                            <th>Fecha Estimada</th>
-                            <th>Progreso</th>
-                        </tr>
+                        <tr><th>Nombre del proyecto</th><th>Estado</th><th>Miembros del equipo</th><th>Fecha Estimada</th><th>Progreso</th></tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Proyecto A</td>
-                            <td>Pendiente</td>
-                            <td>Harry, Louis</td>
-                            <td>10/10/2025</td>
-                            <td>
-                                <div class="progress-line"><span style="width:60%"></span></div>
-                            </td>
+                            <td>Proyecto A</td><td>Pendiente</td><td>Harry, Louis</td><td>10/10/2025</td>
+                            <td><div class="progress-line"><span style="width:60%"></span></div></td>
                         </tr>
                         <tr>
-                            <td>Proyecto B</td>
-                            <td>Activo</td>
-                            <td>Zayn</td>
-                            <td>15/09/2025</td>
-                            <td>
-                                <div class="progress-line"><span style="width:95%"></span></div>
-                            </td>
+                            <td>Proyecto B</td><td>Activo</td><td>Zayn</td><td>15/09/2025</td>
+                            <td><div class="progress-line"><span style="width:95%"></span></div></td>
                         </tr>
                         <tr>
-                            <td>Proyecto C</td>
-                            <td>Completo</td>
-                            <td>Liam, Niall</td>
-                            <td>01/08/2025</td>
-                            <td>
-                                <div class="progress-line"><span style="width:100%"></span></div>
-                            </td>
+                            <td>Proyecto C</td><td>Completo</td><td>Liam, Niall</td><td>01/08/2025</td>
+                            <td><div class="progress-line"><span style="width:100%"></span></div></td>
+                        </tr>
+                        <tr>
+                            <td>Proyecto D</td><td>Inactivo</td><td>Ariana</td><td>12/12/2025</td>
+                            <td><div class="progress-line"><span style="width:0%"></span></div></td>
                         </tr>
                          <tr>
-                            <td>Proyecto D</td>
-                            <td>Inactivo</td>
-                            <td>Ariana</td>
-                            <td>12/12/2025</td>
-                            <td>
-                                <div class="progress-line"><span style="width:0%"></span></div>
-                            </td>
-                        </tr>
-                         <tr>
-                            <td>Proyecto E</td>
-                            <td>Activo</td>
-                            <td>Blair</td>
-                            <td>15/10/2025</td>
-                            <td>
-                                <div class="progress-line"><span style="width:45%"></span></div>
-                            </td>
+                            <td>Proyecto E</td><td>Activo</td><td>Blair</td><td>15/10/2025</td>
+                            <td><div class="progress-line"><span style="width:45%"></span></div></td>
                         </tr>
                         <tr>
-                            <td>Proyecto F</td>
-                            <td>Inactivo</td>
-                            <td>Larry</td>
-                            <td>19/11/2025</td>
-                            <td>
-                                <div class="progress-line"><span style="width:10%"></span></div>
-                            </td>
+                            <td>Proyecto F</td><td>Inactivo</td><td>Larry</td><td>19/11/2025</td>
+                            <td><div class="progress-line"><span style="width:10%"></span></div></td>
                         </tr>
                         <tr>
-                            <td>Proyecto G</td>
-                            <td>Completo</td>
-                            <td>Sabrina</td>
-                            <td>8/9/2025</td>
-                            <td>
-                                <div class="progress-line"><span style="width:100%"></span></div>
-                            </td>
+                            <td>Proyecto G</td><td>Completo</td><td>Sabrina</td><td>8/9/2025</td>
+                            <td><div class="progress-line"><span style="width:100%"></span></div></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        
+            
             <!-- Formulario para nuevo proyecto -->
             <h2>Crear nuevo Proyecto:</h2>
             <div class="form-proyecto">
@@ -703,7 +757,7 @@
                     <label>Nombre del Proyecto</label>
                     <input type="text">
                     <label>Descripción</label>
-                    <textarea type="text"></textarea>
+                    <textarea></textarea>
                     <label>Fecha de inicio</label>
                     <input type="date">
                     <label>Fecha Fin estimada</label>
@@ -719,102 +773,177 @@
                     <ul id="lista-miembros"></ul>
                 </div>
             </div>
+            <hr>
+            <!-- DIAGRAMA DE GANTT DENTRO DE PROYECTOS -->
+            <h2>Proyecto - Diagrama de Gantt</h2>
+            <div class="form-hito">
+                <h3>Agregar nuevo Hito</h3>
+                <form id="hitoForm">
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="proyecto">Proyecto asociado:</label>
+                            <select id="proyecto" required>
+                                <option value="">Seleccione...</option>
+                                <option value="Proyecto 1">Proyecto 1</option>
+                                <option value="Proyecto 2">Proyecto 2</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="fechaInicio">Fecha inicio:</label>
+                            <input type="date" id="fechaInicio" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="fechaFin">Fecha fin:</label>
+                            <input type="date" id="fechaFin" required>        
+                        </div>
+                        <div class="form-field">
+                            <label for="estadoHito">Estado:</label>
+                            <select id="estadoHito">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="progreso">En Progreso</option>
+                                <option value="completado">Completado</option>
+                                <option value="retrasado">Retrasado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="nombreHito">Nombre del Hito:</label>
+                            <input type="text" id="nombreHito" placeholder="Ej: Definir requisitos" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-agregar">Agregar Hito</button>
+                </form>
+            </div>
+            
+            <div class="gantt-container">
+                <div class="gantt-chart" id="ganttChart">
+                    <div class="gantt-task-header">Hitos del Proyecto</div>
+                    <div class="gantt-dates-header" id="datesHeader"></div>
+                </div>
+            </div>
+            <div id="ganttBody"></div>
         </div>
-        <!-- Sección Servicios -->
-<div id="servicios" class="contenido" style="display:none;">
-     <h1>Gestión de Servicios</h1>
-
-     <div class="table-container">
-    <table id="tablaSolicitudes">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Tipo</th>
-                <th>Fecha</th>
-                <th>Hora</th>
-                <th>Estado</th>
-                <th>Registrado el</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-</div>
-
-<div class="servicio-card">
-    <h3>Solicitar Asesoría</h3>
-    <p>Selecciona fecha, hora y tema de tu asesoría. Adjunta una descripción breve de tu necesidad.</p>
-    <button onclick="abrirModalAsesoria()">Solicitar</button>
-</div>
-
-<div class="servicio-card">
-    <h3>Solicitar Consultoría</h3>
-    <p>Adjunta documentos necesarios y genera un número de seguimiento automático para tu solicitud.</p>
-    <button onclick="abrirModalConsultoria()">Solicitar</button>
-</div>
-<div class="servicio-card">
-    <h3>Ver Estado de Solicitudes</h3>
-    <p>Revisa el estado actualizado de tus solicitudes: “pendiente”, “en proceso” o “resuelto”. Se mostrará la fecha de creación y última actualización.</p>
-    <button onclick="abrirModalSolicitudes()">Solicitar</button>
-</div>
-<!-- Modal Solicitar Asesoría -->
-<div id="modal-asesoria" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="cerrarModalAsesoria()">&times;</span>
-        <h2>Solicitar Asesoría</h2>
-        <form id="formAsesoria">
-    <input type="date" id="fechaAsesoria" required>
-    <input type="time" id="horaAsesoria" required>
-    <input type="text" id="temaAsesoria" placeholder="Tema" required>
-    <textarea id="descripcionAsesoria" placeholder="Descripción" required></textarea>
-    <button type="submit">Enviar</button>
-</form>
-
-    </div>
-</div>
-</div>
-
-
-    <!-- Modal Solicitar Consultoría -->
-    <div id="modal-consultoria" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="cerrarModalConsultoria()">&times;</span>
-            <h2>Solicitar Consultoría</h2>
-            <form id="formConsultoria">
-                <input type="date" id="fechaConsultoria" required>
-                <input type="time" id="horaConsultoria" required>
-                <input type="text" id="documentosConsultoria" placeholder="Documentos necesarios" required>
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal Ver Estado de Solicitudes -->
-    <div id="modal-solicitudes" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="cerrarModalSolicitudes()">&times;</span>
-            <h2>Estado de Solicitudes</h2>
-            <div id="estadoSolicitudes">
-                <!-- Aquí puedes generar dinámicamente la lista de solicitudes -->
-                <p>No hay solicitudes registradas aún.</p>
+        
+        <!-- Servicios -->
+        <div id="servicios" class="contenido" style="display:none;">
+            <h1>Gestión de Servicios</h1>
+            <div class="table-container">
+                <table id="tablaSolicitudes">
+                    <thead>
+                        <tr><th>#</th><th>Tipo</th><th>Fecha</th><th>Hora</th><th>Estado</th><th>Registrado el</th></tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="servicio-card">
+                <h3>Solicitar Asesoría</h3>
+                <p>Selecciona fecha, hora y tema de tu asesoría. Adjunta una descripción breve de tu necesidad.</p>
+                <button onclick="abrirModalAsesoria()">Solicitar</button>
+            </div>
+            <div class="servicio-card">
+                <h3>Solicitar Consultoría</h3>
+                <p>Adjunta documentos necesarios y genera un número de seguimiento automático para tu solicitud.</p>
+                <button onclick="abrirModalConsultoria()">Solicitar</button>
+            </div>
+            <div class="servicio-card">
+                <h3>Ver Estado de Solicitudes</h3>
+                <p>Revisa el estado actualizado de tus solicitudes: "pendiente", "en proceso" o "resuelto". Se mostrará la fecha de creación y última actualización.</p>
+                <button onclick="abrirModalSolicitudes()">Solicitar</button>
+            </div>
+            <!-- Modal Solicitar Asesoría -->
+             <div id="modal-asesoria" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="cerrarModalAsesoria()">&times;</span>
+                    <h2>Solicitar Asesoría</h2>
+                    <form id="formAsesoria">
+                        <input type="date" id="fechaAsesoria" required>
+                        <input type="time" id="horaAsesoria" required>
+                        <input type="text" id="temaAsesoria" placeholder="Tema" required>
+                        <textarea id="descripcionAsesoria" placeholder="Descripción" required></textarea>
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal Solicitar Consultoría -->
+             <div id="modal-consultoria" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="cerrarModalConsultoria()">&times;</span>
+                    <h2>Solicitar Consultoría</h2>
+                    <form id="formConsultoria">
+                        <input type="date" id="fechaConsultoria" required>
+                        <input type="time" id="horaConsultoria" required>
+                        <input type="text" id="documentosConsultoria" placeholder="Documentos necesarios" required>
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal Ver Estado de Solicitudes -->
+             <div id="modal-solicitudes" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="cerrarModalSolicitudes()">&times;</span>
+                    <h2>Estado de Solicitudes</h2>
+                    <div id="estadoSolicitudes">
+                        <p>No hay solicitudes registradas aún.</p>
+                    </div>
+                </div>
             </div>
         </div>
+                    <!-- Modal para Editar Hito -->
+<div id="modal-editar-hito" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModalEditarHito()">&times;</span>
+        <h2>Editar Hito</h2>
+        <form id="formEditarHito">
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="editProyecto">Proyecto asociado:</label>
+                    <select id="editProyecto" required>
+                        <option value="">Seleccione...</option>
+                        <option value="Proyecto 1">Proyecto 1</option>
+                        <option value="Proyecto 2">Proyecto 2</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="editFechaInicio">Fecha inicio:</label>
+                    <input type="date" id="editFechaInicio" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="editFechaFin">Fecha fin:</label>
+                    <input type="date" id="editFechaFin" required>        
+                </div>
+                <div class="form-field">
+                    <label for="editEstadoHito">Estado:</label>
+                    <select id="editEstadoHito">
+                        <option value="pendiente">Pendiente</option>
+                        <option value="progreso">En Progreso</option>
+                        <option value="completado">Completado</option>
+                        <option value="retrasado">Retrasado</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="editNombreHito">Nombre del Hito:</label>
+                    <input type="text" id="editNombreHito" placeholder="Ej: Definir requisitos" required>
+                </div>
+            </div>
+            <button type="submit" class="btn-agregar">Guardar Cambios</button>
+        </form>
     </div>
 </div>
-        <!-- Sección Perfil -->
+        <!-- Perfil -->
         <div id="perfil" class="contenido" style="display:none;">
             <h1>Mi Perfil</h1>
-            
-            <!-- Información básica del perfil -->
             <div class="perfil-header">
                 <div class="perfil-avatar"></div>
                 <div class="perfil-info">
-                    <h2>Timothee Chal</h2>
-                    <p>timothee.chal@edu.co</p>
-                    <p>Ingeniero de Sistemas</p>
+                    <h2>Timothee Chal</h2><p>timothee.chal@edu.co</p><p>Ingeniero de Sistemas</p>
                 </div>
             </div>
-            <!-- Información Personal -->
             <div class="perfil-section">
                 <h3>Información Personal</h3>
                 <div class="perfil-form">
@@ -839,16 +968,26 @@
                             <input type="text" value="Bucaramanga" readonly>
                         </div>
                     </div>
+                    <!-- Selector de rol -->
+                     <label for="roleSelect">Rol:</label>
+                     <select id="roleSelect" onchange="setUserRole(this.value)">
+                        <option value="usuario">Usuario</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                    <!-- Panel que solo verá el admin -->
+                    <div id="adminPanel" style="display:none; margin-top:12px;">
+                        <h3>Panel de Administración</h3>
+                        <button onclick="activarEdicion()">Activar edición</button>
+                        <button onclick="revertirCambios()">Revertir último cambio</button>
+                        <button onclick="organizarSecciones()">Organizar secciones</button>
+                    </div>
                 </div>
             </div>
-
             <!-- Seguridad -->
             <div class="perfil-section">
                 <h3>Seguridad</h3>
                 <button class="security-btn" onclick="abrirModalPassword()">Cambiar contraseña</button>
             </div>
-
-            <!-- Estadísticas personales -->
             <div class="perfil-section">
                 <h3>Estadísticas personales</h3>
                 <div class="stats-grid">
@@ -867,63 +1006,57 @@
                 </div>
             </div>
         </div>
-        <!-- ===== NUEVO: MODAL CAMBIAR CONTRASEÑA ===== -->
-<div id="modal-pass" class="modal" style="display:none;">
-    <div class="modal-content">
-        <span class="close" onclick="cerrarModalPassword()">&times;</span>
-        <h2>Cambiar Contraseña</h2>
-        <div class="perfil-form">
-            <div class="form-field">
-                <label>Contraseña actual</label>
-                <input type="password" id="current-pass">
-            </div>
-            <div class="form-field">
-                <label>Nueva contraseña</label>
-                <input type="password" id="new-pass">
-            </div>
-            <div class="form-field">
-                <label>Confirmar nueva contraseña</label>
-                <input type="password" id="confirm-pass">
-            </div>
-            <button class="security-btn" onclick="cambiarContraseña()">Guardar cambios</button>
-        </div>
     </div>
-</div>
-<!-- Modal para crear proyecto -->
-<div id="modalProyecto" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="cerrarModalProyecto()">&times;</span>
-        <h2>Crear Proyecto</h2>
-        <form id="formCrearProyecto">
-            <label for="nombreProyecto">Nombre del proyecto:</label>
-            <input type="text" id="nombreProyecto" name="nombreProyecto" required>
-
-            <label for="descripcionProyecto">Descripción:</label>
-            <textarea id="descripcionProyecto" name="descripcionProyecto" required></textarea>
-
-            <label for="fechaInicio">Fecha de inicio:</label>
-            <input type="date" id="fechaInicio" name="fechaInicio" required>
-
-            <label for="fechaFin">Fecha de finalización:</label>
-            <input type="date" id="fechaFin" name="fechaFin" required>
-
-            <button type="submit">Guardar</button>
-        </form>
-    </div>
-</div>
-
-    </div>
-    
+            <!-- ===== NUEVO: MODAL CAMBIAR CONTRASEÑA ===== -->
+             <div id="modal-pass" class="modal" style="display:none;">
+                <div class="modal-content">
+                    <span class="close" onclick="cerrarModalPassword()">&times;</span>
+                    <h2>Cambiar Contraseña</h2>
+                    <div class="perfil-form">
+                        <div class="form-field">
+                            <label>Contraseña actual</label>
+                            <input type="password" id="current-pass">
+                        </div>
+                        <div class="form-field">
+                            <label>Nueva contraseña</label>
+                            <input type="password" id="new-pass">
+                        </div>
+                        <div class="form-field">
+                            <label>Confirmar nueva contraseña</label>
+                            <input type="password" id="confirm-pass">
+                        </div>
+                        <button class="security-btn" onclick="cambiarContraseña()">Guardar cambios</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal para crear proyecto -->
+             <div id="modalProyecto" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="cerrarModalProyecto()">&times;</span>
+                    <h2>Crear Proyecto</h2>
+                    <form id="formCrearProyecto">
+                        <label for="nombreProyecto">Nombre del proyecto:</label>
+                        <input type="text" id="nombreProyecto" name="nombreProyecto" required>
+                        <label for="descripcionProyecto">Descripción:</label>
+                        <textarea id="descripcionProyecto" name="descripcionProyecto" required></textarea>
+                        <label for="fechaInicio">Fecha de inicio:</label>
+                        <input type="date" id="fechaInicioProyecto" name="fechaInicio" required>
+                        <label for="fechaFin">Fecha de finalización:</label>
+                        <input type="date" id="fechaFinProyecto" name="fechaFin" required>
+                        <button type="submit">Guardar</button>
+                    </form>
+                </div>
+            </div>
     <script>
+        /*--SCRIPT--*/
+        //function
         function mostrarDetalles(texto) {
             alert("Mostrando detalles de: " + texto);
         }
-
         function mostrarSeccion(seccion) {
             const secciones = document.querySelectorAll('.contenido');
             secciones.forEach(s => s.style.display = 'none');
             document.getElementById(seccion).style.display = 'block';
-
             const links = document.querySelectorAll('.sidebar a');
             links.forEach(l => l.classList.remove('active'));
             event.target.classList.add('active');
@@ -940,203 +1073,492 @@
                 alert("Por favor, escribe un nombre antes de agregar.");
             }
         }
-function cambiarContraseña() {
-        const current = document.getElementById("current-pass").value;
-        const nuevo = document.getElementById("new-pass").value;
-        const confirm = document.getElementById("confirm-pass").value;
-
-        if (!current || !nuevo || !confirm) {
-            alert("Por favor completa todos los campos.");
-            return;
+        function cambiarContraseña() {
+            const current = document.getElementById("current-pass").value;
+            const nuevo = document.getElementById("new-pass").value;
+            const confirm = document.getElementById("confirm-pass").value;
+            
+            if (!current || !nuevo || !confirm) {
+                alert("Por favor completa todos los campos.");
+                return;
+            }
+            
+            if (nuevo.length < 8) {
+                alert("La nueva contraseña debe tener al menos 8 caracteres.");
+                return;
+            }
+            if (!/[A-Z]/.test(nuevo)) {
+                alert("La nueva contraseña debe contener al menos una letra mayúscula.");
+                return;
+            }
+            if (!/[!@#$%^&*()_+\-=[\]{};':\"\\|,.<>/?]/.test(nuevo)) {
+                alert("La nueva contraseña debe contener al menos un carácter especial.");
+                return;
+            }
+            if (nuevo !== confirm) {
+                alert("La nueva contraseña y la confirmación no coinciden.");
+                return;
+            }
+            if (nuevo === current) {
+                alert("No puedes reutilizar tu contraseña actual.");
+                return;
+            }
+            const fechaCambio = new Date();
+            console.log("Contraseña cambiada el: " + fechaCambio.toLocaleString());
+            alert("Contraseña cambiada exitosamente! Se cerrará la sesión para aplicar los cambios.");
+            // Simular cierre de sesión
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
         }
-
-        if (nuevo.length < 8) {
-            alert("La nueva contraseña debe tener al menos 8 caracteres.");
-            return;
+        // Generar ID automático
+        function generarID() {
+            const id = "PRJ-" + Math.floor(Math.random() * 1000).toString().padStart(3, "0");
+            console.log("ID generado:", id);
         }
-
-        if (!/[A-Z]/.test(nuevo)) {
-            alert("La nueva contraseña debe contener al menos una letra mayúscula.");
-            return;
+        window.onload = generarID;
+        // Abrir/cerrar historial
+        function mostrarHistorial() {
+            document.getElementById("modal-historial").style.display = "block";
         }
-
-        if (!/[!@#$%^&*()_+\-=[\]{};':\"\\|,.<>/?]/.test(nuevo)) {
-            alert("La nueva contraseña debe contener al menos un carácter especial.");
-            return;
+        function cerrarHistorial() {
+            document.getElementById("modal-historial").style.display = "none";
         }
-        if (nuevo !== confirm) {
-            alert("La nueva contraseña y la confirmación no coinciden.");
-            return;
+        // Abrir/cerrar tareas
+        function abrirTareas(nombreProyecto) {
+            document.getElementById("modal-tareas").style.display = "block";
         }
-        if (nuevo === current) {
-            alert("No puedes reutilizar tu contraseña actual.");
-            return;
+        function cerrarTareas() {
+            document.getElementById("modal-tareas").style.display = "none";
         }
-        const fechaCambio = new Date();
-        console.log("Contraseña cambiada el: " + fechaCambio.toLocaleString());
-        alert("Contraseña cambiada exitosamente! Se cerrará la sesión para aplicar los cambios.");
-        // Simular cierre de sesión
-        setTimeout(() => {
-            location.reload();
-        }, 1000);
-    }
-      // Generar ID automático
-    function generarID() {
-        const id = "PRJ-" + Math.floor(Math.random() * 1000).toString().padStart(3, "0");
-        document.getElementById("id-proyecto").value = id;
-    }
-    window.onload = generarID;
-
-    // Abrir/cerrar historial
-    function mostrarHistorial() {
-        document.getElementById("modal-historial").style.display = "block";
-    }
-    function cerrarHistorial() {
-        document.getElementById("modal-historial").style.display = "none";
-    }
-
-    // Abrir/cerrar tareas
-    function abrirTareas(nombreProyecto) {
-        document.getElementById("modal-tareas").style.display = "block";
-    }
-    function cerrarTareas() {
-        document.getElementById("modal-tareas").style.display = "none";
-    }
-    function agregarTarea() {
-        const lista = document.getElementById("lista-tareas");
-        const nueva = document.getElementById("nueva-tarea").value;
-        if(nueva.trim() !== "") {
-            const li = document.createElement("li");
-            li.textContent = nueva;
-            lista.appendChild(li);
-            document.getElementById("nueva-tarea").value = "";
+        function agregarTarea() {
+            const lista = document.getElementById("lista-tareas");
+            const nueva = document.getElementById("nueva-tarea").value;
+            if(nueva.trim() !== "") {
+                const li = document.createElement("li");
+                li.textContent = nueva;
+                lista.appendChild(li);
+                document.getElementById("nueva-tarea").value = "";
+            }
         }
-    }
-    function guardarProyecto(event) {
-        event.preventDefault();
-        alert("Proyecto guardado con ID " + document.getElementById("id-proyecto").value);
-        generarID(); // genera un nuevo ID para el próximo proyecto
-    }
-    function abrirModalPassword() {
-    document.getElementById("modal-pass").style.display = "flex";
-}
-function cerrarModalPassword() {
-    document.getElementById("modal-pass").style.display = "none";
-}
-function abrirModalProyecto() {
-    document.getElementById("modalProyecto").style.display = "flex";
-}
-
-function cerrarModalProyecto() {
-    document.getElementById("modalProyecto").style.display = "none";
-}
-document.getElementById("formCrearProyecto").addEventListener("submit", function(e){
-    e.preventDefault();
-    const nombre = document.getElementById("nombreProyecto").value;
-    const descripcion = document.getElementById("descripcionProyecto").value;
-    alert("Proyecto creado exitosamente:\n" + 
-          "Nombre: " + nombre + "\n" +
-          "Descripción: " + descripcion);
-    document.getElementById("formCrearProyecto").reset();
-    cerrarModalProyecto();
-});
- function abrirModalProyecto() {
-        document.getElementById("modalProyecto").style.display = "flex";
-    }
-    function cerrarModalProyecto() {
-        document.getElementById("modalProyecto").style.display = "none";
-    }
-    // Cierra modal si el usuario hace clic fuera del contenido
-    window.onclick = function(event) {
-        const modal = document.getElementById("modalProyecto");
-        if (event.target === modal) {
-            modal.style.display = "none";
+        function guardarProyecto(event) {
+            event.preventDefault();
+            alert("Proyecto guardado con ID " + document.getElementById("id-proyecto").value);
+            generarID(); // genera un nuevo ID para el próximo proyecto
         }
-    }
-    let contadorSolicitudes = 1;
-const tablaSolicitudes = document.querySelector("#tablaSolicitudes tbody");
-    // Referencia a la tabla
-    const tabla = document.querySelector("#tablaSolicitudes tbody");
-    // Abrir y cerrar modales
-    function abrirModalAsesoria() { document.getElementById("modal-asesoria").style.display = "flex"; }
-    function cerrarModalAsesoria() { document.getElementById("modal-asesoria").style.display = "none"; }
-    function abrirModalConsultoria() { document.getElementById("modal-consultoria").style.display = "flex"; }
-    function cerrarModalConsultoria() { document.getElementById("modal-consultoria").style.display = "none"; }
-    function abrirModalSolicitudes() { document.getElementById("modal-solicitudes").style.display = "flex"; cargarEstadoSolicitudes(); }
-    function cerrarModalSolicitudes() { document.getElementById("modal-solicitudes").style.display = "none"; }
-    let contador = 1; // Contador de solicitudes
-    let solicitudes = []; // Array para guardar solicitudes
-    // Manejo del formulario Asesoría
-    document.getElementById("formAsesoria").addEventListener("submit", function(e) {
-        e.preventDefault();
-        const fecha = document.getElementById("fechaAsesoria").value;
-        const hora = document.getElementById("horaAsesoria").value;
-        const tema = document.getElementById("temaAsesoria").value;
-        const descripcion = document.getElementById("descripcionAsesoria").value;
-
-        const nuevaSolicitud = {
-            id: contador++,
-            tipo: "Asesoría",
-            fecha,
-            hora,
-            estado: "Pendiente",
-            registradoEl: new Date().toLocaleString()
-        };
-
-        solicitudes.push(nuevaSolicitud);
-        agregarFilaTabla(nuevaSolicitud);
-
-        this.reset();
-        cerrarModalAsesoria();
-    });
-    document.getElementById("formConsultoria").addEventListener("submit", function(e) {
-        e.preventDefault();
-        const fecha = document.getElementById("fechaConsultoria").value;
-        const hora = document.getElementById("horaConsultoria").value;
-        const documentos = document.getElementById("documentosConsultoria").value;
-        const nuevaSolicitud = {
-            id: contador++,
-            tipo: "Consultoría",
-            fecha,
-            hora,
-            estado: "Pendiente",
-            registradoEl: new Date().toLocaleString()
-        };
-        solicitudes.push(nuevaSolicitud);
-        agregarFilaTabla(nuevaSolicitud);
-        this.reset();
-        cerrarModalConsultoria();
-    });
-    function agregarFilaTabla(solicitud) {
-        const fila = document.createElement("tr");
-        fila.innerHTML = `
+        function abrirModalPassword() {
+            document.getElementById("modal-pass").style.display = "flex";
+        }
+        function cerrarModalPassword() {
+            document.getElementById("modal-pass").style.display = "none";
+        }
+        function abrirModalProyecto() {
+            document.getElementById("modalProyecto").style.display = "flex";
+        }
+        function cerrarModalProyecto() {
+            document.getElementById("modalProyecto").style.display = "none";
+        }
+        document.getElementById("formCrearProyecto").addEventListener("submit", function(e){
+            e.preventDefault();
+            const nombre = document.getElementById("nombreProyecto").value;
+            const descripcion = document.getElementById("descripcionProyecto").value;
+            alert("Proyecto creado exitosamente:\n" + 
+            "Nombre: " + nombre + "\n" +
+            "Descripción: " + descripcion);
+            document.getElementById("formCrearProyecto").reset();
+            cerrarModalProyecto();
+        });
+        function abrirModalProyecto() {
+            document.getElementById("modalProyecto").style.display = "flex";
+        }
+        function cerrarModalProyecto() {
+            document.getElementById("modalProyecto").style.display = "none";
+        }
+        /*Manejo del rol*/
+        let userRole = "usuario"; // valor por defecto
+        function setUserRole(role) {
+            localStorage.setItem("userRole", role);
+            userRole = role;
+            console.log("Rol seteado a:", role);
+            updateUIForRole();
+        }
+        function getUserRole() {
+            return localStorage.getItem("userRole") || "usuario";
+        }
+        function isAdmin() {
+            return getUserRole() === "admin";
+        }
+        function updateUIForRole() {
+            const panel = document.getElementById("adminPanel");
+            if (isAdmin()) {
+                if (panel) panel.style.display = "block";
+                document.querySelectorAll(".editable").forEach(el => el.classList.add("admin-enabled"));
+            } else {
+                if (panel) panel.style.display = "none";
+                document.querySelectorAll(".editable").forEach(el => el.classList.remove("admin-enabled"));
+            }
+        }
+        let contadorSolicitudes = 1;
+        const tablaSolicitudes = document.querySelector("#tablaSolicitudes tbody");
+        // Referencia a la tabla
+        const tabla = document.querySelector("#tablaSolicitudes tbody");
+        // Abrir y cerrar modales
+        function abrirModalAsesoria() { document.getElementById("modal-asesoria").style.display = "flex"; }
+        function cerrarModalAsesoria() { document.getElementById("modal-asesoria").style.display = "none"; }
+        function abrirModalConsultoria() { document.getElementById("modal-consultoria").style.display = "flex"; }
+        function cerrarModalConsultoria() { document.getElementById("modal-consultoria").style.display = "none"; }
+        function abrirModalSolicitudes() { document.getElementById("modal-solicitudes").style.display = "flex"; cargarEstadoSolicitudes(); }
+        function cerrarModalSolicitudes() { document.getElementById("modal-solicitudes").style.display = "none"; }
+        let contador = 1; // Contador de solicitudes
+        let solicitudes = []; // Array para guardar solicitudes
+        // Manejo del formulario Asesoría
+        document.getElementById("formAsesoria").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const fecha = document.getElementById("fechaAsesoria").value;
+            const hora = document.getElementById("horaAsesoria").value;
+            const tema = document.getElementById("temaAsesoria").value;
+            const descripcion = document.getElementById("descripcionAsesoria").value;
+            const nuevaSolicitud = {
+                id: contador++,
+                tipo: "Asesoría",
+                fecha,
+                hora,
+                estado: "Pendiente",
+                registradoEl: new Date().toLocaleString()
+            };
+            solicitudes.push(nuevaSolicitud);
+            agregarFilaTabla(nuevaSolicitud);
+            this.reset();
+            cerrarModalAsesoria();
+        });
+        document.getElementById("formConsultoria").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const fecha = document.getElementById("fechaConsultoria").value;
+            const hora = document.getElementById("horaConsultoria").value;
+            const documentos = document.getElementById("documentosConsultoria").value;
+            const nuevaSolicitud = {
+                id: contador++,
+                tipo: "Consultoría",fecha,hora,estado: "Pendiente",registradoEl: new Date().toLocaleString()
+            };
+            solicitudes.push(nuevaSolicitud);
+            agregarFilaTabla(nuevaSolicitud);
+            this.reset();
+            cerrarModalConsultoria();
+        });
+        function agregarFilaTabla(solicitud) {
+            const fila = document.createElement("tr");
+            fila.innerHTML = `
             <td>${solicitud.id}</td>
             <td>${solicitud.tipo}</td>
             <td>${solicitud.fecha}</td>
             <td>${solicitud.hora}</td>
             <td>${solicitud.estado}</td>
             <td>${solicitud.registradoEl}</td>
-        `;
-        tabla.appendChild(fila);
-    }
-    function cargarEstadoSolicitudes() {
-        const estadoDiv = document.getElementById("estadoSolicitudes");
-        if (solicitudes.length === 0) {
-            estadoDiv.innerHTML = "<p>No hay solicitudes registradas aún.</p>";
-            return;
+            `;
+            tabla.appendChild(fila);
         }
-        let html = "<ul>";
-        solicitudes.forEach(s => {
-            html += `<li>Solicitud #${s.id} - ${s.tipo} - ${s.estado} - Creada: ${s.registradoEl}</li>`;
-        });
-        html += "</ul>";
-        estadoDiv.innerHTML = html;
+        function cargarEstadoSolicitudes() {
+            const estadoDiv = document.getElementById("estadoSolicitudes");
+            if (solicitudes.length === 0) {
+                estadoDiv.innerHTML = "<p>No hay solicitudes registradas aún.</p>";
+                return;
+            }
+            let html = "<ul>";
+                solicitudes.forEach(s => {
+                    html += `<li>Solicitud #${s.id} - ${s.tipo} - ${s.estado} - Creada: ${s.registradoEl}</li>`;
+                });
+                html += "</ul>";
+                estadoDiv.innerHTML = html;
+            }
+            window.addEventListener("click", function(event) {
+                if (event.target === document.getElementById("modal-asesoria")) cerrarModalAsesoria();
+                if (event.target === document.getElementById("modal-consultoria")) cerrarModalConsultoria();
+                if (event.target === document.getElementById("modal-solicitudes")) cerrarModalSolicitudes();
+            });
+            let historialCambios = [];
+            function activarEdicion() {
+                if (!isAdmin()) return alert("No tienes permisos de administrador.");
+                document.querySelectorAll(".editable").forEach(el => {
+                    historialCambios.push({ id: el.id || null, contenido: el.innerHTML, fecha: new Date().toISOString() });
+                    el.contentEditable = true;
+                    el.classList.add("editing");
+                });
+                alert("Modo edición activado.");
+            }
+            function revertirCambios() {
+                const ultimo = historialCambios.pop();
+                if (!ultimo) return alert("No hay cambios para revertir.");
+                if (ultimo.id) {
+                    const el = document.getElementById(ultimo.id);
+                    if (el) el.innerHTML = ultimo.contenido;
+                }
+            }
+            document.addEventListener("DOMContentLoaded", () => {
+                if (!localStorage.getItem("userRole")) {
+                    localStorage.setItem("userRole", "usuario");
+                }
+                userRole = getUserRole();
+                const sel = document.getElementById("roleSelect");
+                if (sel) sel.value = userRole;
+                updateUIForRole();
+                if (typeof generarID === "function") generarID();
+            });
+            let hitos = [];
+            let contadorHitos = 1;
+            let hitoEnEdicion = null;
+function renderizarGantt() {
+    const ganttBody = document.getElementById('ganttBody');
+    const datesHeader = document.getElementById('datesHeader');
+    if (hitos.length === 0) {
+        datesHeader.innerHTML = '<div class="gantt-date" style="flex: 1; text-align: center;">No hay fechas</div>';
+        ganttBody.innerHTML = `
+            <div class="gantt-row" style="justify-content: center; padding: 40px;">
+                <span style="font-style: italic; color: #666; text-align: center;">
+                    No hay hitos agregados aún. Utiliza el formulario para agregar el primer hito.
+                </span>
+            </div>
+        `;
+        return;
     }
-    window.addEventListener("click", function(event) {
-        if (event.target === document.getElementById("modal-asesoria")) cerrarModalAsesoria();
-        if (event.target === document.getElementById("modal-consultoria")) cerrarModalConsultoria();
-        if (event.target === document.getElementById("modal-solicitudes")) cerrarModalSolicitudes();
+    const fechas = hitos.flatMap(h => [h.inicio, h.fin]);
+    const fechaMinima = new Date(Math.min(...fechas.map(f => new Date(f))));
+    const fechaMaxima = new Date(Math.max(...fechas.map(f => new Date(f))));
+    
+    const fechasProyecto = generarFechas(fechaMinima, fechaMaxima);
+    datesHeader.innerHTML = '';
+    
+    fechasProyecto.forEach(fecha => {
+        const dateDiv = document.createElement('div');
+        dateDiv.className = 'gantt-date';
+        dateDiv.textContent = formatearFecha(fecha);
+        datesHeader.appendChild(dateDiv);
     });
+    ganttBody.innerHTML = '';
+
+    hitos.forEach(hito => {
+        const row = document.createElement('div');
+        row.className = 'gantt-row';
+
+        const taskName = document.createElement('div');
+        taskName.className = 'gantt-task-name';
+        
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = hito.nombre;
+        
+        const actionsDiv = document.createElement('div');
+        actionsDiv.className = 'gantt-actions';
+        
+        const editBtn = document.createElement('button');
+        editBtn.className = 'btn-edit';
+        editBtn.textContent = '✏️';
+        editBtn.onclick = () => editarHito(hito.id);
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'btn-delete';
+        deleteBtn.textContent = '🗑️';
+        deleteBtn.onclick = () => eliminarHito(hito.id);
+        
+        actionsDiv.appendChild(editBtn);
+        actionsDiv.appendChild(deleteBtn);
+        
+        taskName.appendChild(nameSpan);
+        taskName.appendChild(actionsDiv);
+
+        const timeline = document.createElement('div');
+        timeline.className = 'gantt-timeline';
+
+        fechasProyecto.forEach((fecha, index) => {
+            const gridLine = document.createElement('div');
+            gridLine.className = 'gantt-grid-line';
+            gridLine.style.left = `${(index / (fechasProyecto.length - 1)) * 100}%`;
+            timeline.appendChild(gridLine);
+        });
+
+        const posicion = calcularPosicion(hito.inicio, hito.fin, fechaMinima, fechaMaxima);
+        const bar = document.createElement('div');
+        bar.className = `gantt-bar estado-${hito.estado}`;
+        bar.style.left = `${posicion.left}%`;
+        bar.style.width = `${posicion.width}%`;
+        
+        const duracion = Math.ceil((new Date(hito.fin) - new Date(hito.inicio)) / (1000 * 60 * 60 * 24)) + 1;
+        bar.textContent = `${duracion}d`;
+
+        timeline.appendChild(bar);
+
+        row.appendChild(taskName);
+        row.appendChild(timeline);
+        ganttBody.appendChild(row);
+    });
+}
+// Función para editar un hito
+function editarHito(id) {
+    const hito = hitos.find(h => h.id === id);
+    if (!hito) {
+        alert('Hito no encontrado');
+        return;
+    }
+    hitoEnEdicion = id;
+    document.getElementById('editNombreHito').value = hito.nombre;
+    document.getElementById('editProyecto').value = hito.proyecto || 'Proyecto 1';
+    document.getElementById('editFechaInicio').value = hito.inicio;
+    document.getElementById('editFechaFin').value = hito.fin;
+    document.getElementById('editEstadoHito').value = hito.estado;
+    document.getElementById('modal-editar-hito').style.display = 'flex';
+}
+
+// Función para eliminar un hito
+function eliminarHito(id) {
+    const hito = hitos.find(h => h.id === id);
+    if (!hito) {
+        alert('Hito no encontrado');
+        return;
+    }
+
+    if (confirm(`¿Estás seguro de que quieres eliminar el hito "${hito.nombre}"?`)) {
+        hitos = hitos.filter(h => h.id !== id);
+        renderizarGantt();
+        alert('Hito eliminado exitosamente');
+    }
+}
+
+function cerrarModalEditarHito() {
+    document.getElementById('modal-editar-hito').style.display = 'none';
+    hitoEnEdicion = null;
+}
+function testEditarHito() {
+    console.log("Probando editar hito con ID 1");
+    editarHito(1);
+}
+// Funciones auxiliares FUERA de los event listeners
+function generarFechas(fechaInicio, fechaFin) {
+    const fechas = [];
+    const inicio = new Date(fechaInicio);
+    const fin = new Date(fechaFin);
+    
+    for (let d = new Date(inicio); d <= fin; d.setDate(d.getDate() + 1)) {
+        fechas.push(new Date(d));
+    }
+    
+    return fechas;
+}
+
+function formatearFecha(fecha) {
+    const dia = fecha.getDate().toString().padStart(2, '0');
+    const meses = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 
+                  'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+    return `${dia}-${meses[fecha.getMonth()]}`;
+}
+
+function calcularPosicion(fechaInicio, fechaFin, fechaInicioProyecto, fechaFinProyecto) {
+    const totalDias = (new Date(fechaFinProyecto) - new Date(fechaInicioProyecto)) / (1000 * 60 * 60 * 24);
+    const diasDesdeInicio = (new Date(fechaInicio) - new Date(fechaInicioProyecto)) / (1000 * 60 * 60 * 24);
+    const duracion = (new Date(fechaFin) - new Date(fechaInicio)) / (1000 * 60 * 60 * 24) + 1;
+    
+    const left = (diasDesdeInicio / totalDias) * 100;
+    const width = (duracion / totalDias) * 100;
+    
+    return { left, width };
+}
+
+// Event listener para el formulario de crear hito
+document.getElementById('hitoForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const proyecto = document.getElementById('proyecto').value;  
+    const nombre = document.getElementById('nombreHito').value;
+    const inicio = document.getElementById('fechaInicio').value;
+    const fin = document.getElementById('fechaFin').value;
+    const estado = document.getElementById('estadoHito').value;
+    
+    if (!proyecto || !nombre || !inicio || !fin) {
+        alert('Por favor complete todos los campos');
+        return;
+    }
+    
+    if (new Date(inicio) > new Date(fin)) {
+        alert('La fecha de inicio no puede ser posterior a la fecha de finalización');
+        return;
+    }
+    
+    // Agregar nuevo hito
+    hitos.push({
+        id: contadorHitos++,
+        nombre,
+        proyecto,
+        inicio,
+        fin,
+        estado
+    });
+    
+    hitos.sort((a, b) => new Date(a.inicio) - new Date(b.inicio));
+    
+    renderizarGantt();
+    
+    this.reset();
+    
+    alert('Hito agregado exitosamente');
+});
+
+
+// Event listener para el formulario de editar hito
+document.getElementById('formEditarHito').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    if (!hitoEnEdicion) {
+        alert('Error: No hay hito seleccionado para editar');
+        return;
+    }
+    
+    const nombre = document.getElementById('editNombreHito').value;
+    const inicio = document.getElementById('editFechaInicio').value;
+    const fin = document.getElementById('editFechaFin').value;
+    const estado = document.getElementById('editEstadoHito').value;
+    
+    if (!nombre || !inicio || !fin) {
+        alert('Por favor complete todos los campos');
+        return;
+    }
+    
+    if (new Date(inicio) > new Date(fin)) {
+        alert('La fecha de inicio no puede ser posterior a la fecha de finalización');
+        return;
+    }
+    
+    const hitoIndex = hitos.findIndex(h => h.id === hitoEnEdicion);
+    if (hitoIndex !== -1) {
+        hitos[hitoIndex] = {
+            ...hitos[hitoIndex],
+            nombre,
+            inicio,
+            fin,
+            estado
+        };
+        
+        hitos.sort((a, b) => new Date(a.inicio) - new Date(b.inicio));
+        
+        renderizarGantt();
+        
+        cerrarModalEditarHito();
+        
+        alert('Hito actualizado exitosamente');
+    } else {
+        alert('Error al actualizar el hito');
+    }
+});
+
+// Renderizar el Gantt inicial
+renderizarGantt();
+
+// Verificación de elementos al cargar
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("Modal editar hito:", document.getElementById('modal-editar-hito'));
+    console.log("Form editar hito:", document.getElementById('formEditarHito'));
+    console.log("Botón cerrar:", document.querySelector('#modal-editar-hito .close'));
+    
+    // Verificar que renderizarGantt funciona
+    if (typeof renderizarGantt === 'function') {
+        renderizarGantt();
+    }
+});
     </script>
-</body>
+   </body>
 </html>
