@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Proyecto VoIP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Implementación de VoIP</h1>
+
+  <!-- 8.01 Instalar servidor -->
+  <section>
+    <h2>8.01 Instalar servidor o central VoIP</h2>
+    <button onclick="instalarServidor()">Instalar servidor</button>
+    <p id="servidor-msg"></p>
+  </section>
+
+  <!-- 8.02 Configurar extensiones -->
+  <section>
+    <h2>8.02 Configurar extensiones para usuarios internos</h2>
+    <form onsubmit="configurarExtension(event)">
+      <input type="text" id="usuario" placeholder="Nombre de usuario" required>
+      <input type="text" id="ext" placeholder="Extensión" required>
+      <button type="submit">Registrar</button>
+    </form>
+    <ul id="lista-extensiones"></ul>
+  </section>
+
+  <!-- 8.03 Contraseñas seguras -->
+  <section>
+    <h2>8.03 Asignar contraseñas seguras</h2>
+    <input type="text" id="ext-pass" placeholder="Extensión">
+    <button onclick="generarContrasena()">Generar contraseña</button>
+    <p id="pass-msg"></p>
+  </section>
+
+  <!-- 8.04 Probar registro -->
+  <section>
+    <h2>8.04 Probar registro de extensiones</h2>
+    <input type="text" id="ext-reg" placeholder="Extensión">
+    <button onclick="probarRegistro()">Probar</button>
+    <p id="registro-msg"></p>
+  </section>
+
+  <!-- 8.05 Calidad de audio -->
+  <section>
+    <h2>8.05 Validar calidad de audio</h2>
+    <button onclick="calidadAudio()">Medir calidad</button>
+    <p id="audio-msg"></p>
+  </section>
+
+  <!-- 8.06 Activar cifrado -->
+  <section>
+    <h2>8.06 Activar cifrado SRTP/TLS</h2>
+    <button onclick="activarCifrado()">Activar cifrado</button>
+    <p id="cifrado-msg"></p>
+  </section>
+
+  <!-- 8.07 Habilitar logs -->
+  <section>
+    <h2>8.07 Habilitar logs</h2>
+    <button onclick="mostrarLogs()">Ver logs</button>
+    <pre id="logs"></pre>
+  </section>
+
+  <!-- 9.01 Probar llamadas -->
+  <section>
+    <h2>9.01 Probar llamadas entre extensiones</h2>
+    <input type="text" id="ext1" placeholder="Extensión origen">
+    <input type="text" id="ext2" placeholder="Extensión destino">
+    <button onclick="probarLlamada()">Llamar</button>
+    <p id="llamada-msg"></p>
+  </section>
+
+  <!-- 9.02 Medir latencia -->
+  <section>
+    <h2>9.02 Medir latencia</h2>
+    <button onclick="medirLatencia()">Medir</button>
+    <p id="latencia-msg"></p>
+  </section>
+
+  <!-- 9.03 Validar disponibilidad -->
+  <section>
+    <h2>9.03 Validar disponibilidad</h2>
+    <button onclick="validarDisponibilidad()">Verificar</button>
+    <p id="disp-msg"></p>
+  </section>
+
+  <!-- 9.04 Dispositivos -->
+  <section>
+    <h2>9.04 Validar funcionamiento en dispositivos</h2>
+    <button onclick="validarDispositivos()">Probar dispositivos</button>
+    <p id="disp2-msg"></p>
+  </section>
+
+  <!-- 9.05 Ancho de banda -->
+  <section>
+    <h2>9.05 Medir ancho de banda</h2>
+    <button onclick="anchoBanda()">Medir</button>
+    <p id="banda-msg"></p>
+  </section>
+
+  <!-- 9.06 Llamadas simultáneas -->
+  <section>
+    <h2>9.06 Realizar llamadas simultáneas</h2>
+    <button onclick="llamadasSimultaneas()">Iniciar prueba</button>
+    <p id="sim-msg"></p>
+  </section>
+
+  <!-- 9.07 Métricas -->
+  <section>
+    <h2>9.07 Medir métricas de calidad</h2>
+    <button onclick="medirMetricas()">Generar métricas</button>
+    <pre id="metricas"></pre>
+  </section>
+
+  <script>
+    function instalarServidor() {
+      document.getElementById("servidor-msg").innerText = "✅ Servidor VoIP instalado correctamente.";
+    }
+
+    function configurarExtension(event) {
+      event.preventDefault();
+      const usuario = document.getElementById("usuario").value;
+      const ext = document.getElementById("ext").value;
+      const lista = document.getElementById("lista-extensiones");
+      const li = document.createElement("li");
+      li.textContent = `👤 ${usuario} → Extensión ${ext}`;
+      lista.appendChild(li);
+      event.target.reset();
+    }
+
+    function generarContrasena() {
+      const ext = document.getElementById("ext-pass").value;
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+      let pass = "";
+      for (let i = 0; i < 12; i++) {
+        pass += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      document.getElementById("pass-msg").innerText = `Extensión ${ext} → Contraseña: ${pass}`;
+    }
+
+    function probarRegistro() {
+      const ext = document.getElementById("ext-reg").value;
+      document.getElementById("registro-msg").innerText = `📡 Extensión ${ext} registrada exitosamente.`;
+    }
+
+    function calidadAudio() {
+      const opciones = ["Excelente", "Buena", "Regular", "Mala"];
+      const random = opciones[Math.floor(Math.random() * opciones.length)];
+      document.getElementById("audio-msg").innerText = `🔊 Calidad de audio: ${random}`;
+    }
+
+    function activarCifrado() {
+      document.getElementById("cifrado-msg").innerText = "🔒 Cifrado SRTP/TLS activado correctamente.";
+    }
+
+    function mostrarLogs() {
+      const logs = [
+        "[INFO] Servidor iniciado",
+        "[INFO] Extensión 1001 registrada",
+        "[INFO] Extensión 1002 registrada",
+        "[WARN] Latencia detectada en llamada"
+      ];
+      document.getElementById("logs").innerText = logs.join("\n");
+    }
+
+    function probarLlamada() {
+      const e1 = document.getElementById("ext1").value;
+      const e2 = document.getElementById("ext2").value;
+      document.getElementById("llamada-msg").innerText = `📞 Llamada de ${e1} a ${e2} establecida correctamente.`;
+    }
+
+    function medirLatencia() {
+      const ms = Math.floor(Math.random() * 100) + 20;
+      document.getElementById("latencia-msg").innerText = `⏱️ Latencia: ${ms} ms`;
+    }
+
+    function validarDisponibilidad() {
+      document.getElementById("disp-msg").innerText = "✅ Todos los servicios están disponibles.";
+    }
+
+    function validarDispositivos() {
+      document.getElementById("disp2-msg").innerText = "📱 Extensiones funcionan en PC, móvil y softphone.";
+    }
+
+    function anchoBanda() {
+      const mb = (Math.random() * 5 + 1).toFixed(2);
+      document.getElementById("banda-msg").innerText = `📡 Ancho de banda utilizado: ${mb} Mbps`;
+    }
+
+    function llamadasSimultaneas() {
+      const num = Math.floor(Math.random() * 10) + 1;
+      document.getElementById("sim-msg").innerText = `📞 ${num} llamadas simultáneas realizadas correctamente.`;
+    }
+
+    function medirMetricas() {
+      const metricas = {
+        jitter: (Math.random() * 5).toFixed(2) + " ms",
+        perdida: (Math.random() * 2).toFixed(2) + " %",
+        mos: (Math.random() * 2 + 3).toFixed(2) + "/5"
+      };
+      document.getElementById("metricas").innerText = JSON.stringify(metricas, null, 2);
+    }
+  </script>
+</body>
+</html>
