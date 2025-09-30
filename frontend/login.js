@@ -1,5 +1,6 @@
 const form = document.getElementById('loginForm');
 const message = document.getElementById('message');
+const data = await response.json();
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -26,4 +27,19 @@ form.addEventListener('submit', async (e) => {
         message.textContent = 'No se pudo conectar al servidor';
         console.error(error);
     }
+
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('userId', data.user.id);    
+    localStorage.setItem('email', data.user.email); 
+
+    fetch('/security/login-check', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    userId: data.user.id,
+    email: data.user.email
+  })
+}).catch(() => {});
+    
 });
+
