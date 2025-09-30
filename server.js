@@ -1,6 +1,5 @@
 // server.js
 require('dotenv').config();
-app.use(express.static('public'));
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -12,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
-
+app.use(express.static('public'));
 // Rutas
 app.use('/security', securityRoutes);
 
