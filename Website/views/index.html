@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J&C Automatic Robotic</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="../assets/img/logo.png" alt="Logo">
+      <span>A&R</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html" class="active">Inicio</a>
+      <a href="aboutView.html">Sobre Nosotros</a>
+      <a href="casosExito.html">Casos de Éxito</a>
+      <a href="aliados.html">Centros de Aliados</a>
+    </div>
+    <div class="nav-right">
+      <a href="loginView.html" class="login-btn">Iniciar Sesión</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>J&C Automatic Robotic</h1>
+    <p>Innovamos tu presente, automatizamos tu futuro</p>
+  </section>
+
+  <section class="services">
+    <h2>Servicios</h2>
+    <div class="services-container">
+      <!-- === CONVOCATORIAS === -->
+      <div class="service-card clickable" id="convocatoriasCard">
+        <img src="../assets/img/convocatorias.png" alt="Convocatorias">
+        <h3>CONVOCATORIAS</h3>
+        <div class="separator"></div>
+        <p>¡Impulsa tu crecimiento! Súmate a nuestros proyectos y produce más, mejor y con mayor valor.</p>
+      </div>
+
+      <!-- === PROYECTOS === -->
+      <div class="service-card">
+        <img src="../assets/img/proyectos.png" alt="Proyectos">
+        <h3>PROYECTOS</h3>
+        <div class="separator"></div>
+        <p>Consulta los proyectos que desarrollamos en J&C Automatic Robotic para impulsar 
+            la productividad y competitividad de las empresas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- === MODAL CONVOCATORIAS === -->
+  <div id="modalConvocatorias" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Seleccione una opción</h2>
+      <div class="modal-options">
+        <div class="option">
+          <i class="fas fa-industry"></i>
+          <h3>Soy Empresa</h3>
+          <p>Si eres una empresa, persona natural o jurídica, participa en nuestras convocatorias.</p>
+          <a href="empresa.html" class="btn-option">Postularse</a>
+        </div>
+        <div class="option">
+          <i class="fas fa-briefcase"></i>
+          <h3>Soy Proveedor</h3>
+          <p>Si usted es un proveedor, consultor, operador logístico o interventor, postule sus servicios en nuestras convocatorias.</p>
+          <a href="proveedor.html" class="btn-option">Ir a Convocatorias</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("modalConvocatorias");
+    const btn = document.getElementById("convocatoriasCard");
+    const span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = () => modal.style.display = "block";
+    span.onclick = () => modal.style.display = "none";
+    window.onclick = (event) => { if (event.target === modal) modal.style.display = "none"; };
+  </script>
+
+  <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>📍 Ubicación</h4>
+                <p>Bucaramanga, Santander</p>
+                <p>Colombia</p>
+            </div>
+            <div class="footer-section">
+                <h4>📧 Contacto</h4>
+                <p>info@jcautomatizacion.com</p>
+                <p>+57 300 123 4567</p>
+            </div>
+            <div class="footer-section">
+                <h4>⏰ Horarios</h4>
+                <p>Lunes - Viernes: 8:00 AM - 6:00 PM</p>
+                <p>Sábados: 9:00 AM - 2:00 PM</p>
+            </div>
+            <div class="footer-section">
+                <h4>🌐 Síguenos</h4>
+                <p>@JCAutomatizacion</p>
+                <p>LinkedIn | Twitter | Instagram</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 J&C Automatizacion. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

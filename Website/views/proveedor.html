@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convocatorias para Proveedores | J&C Automatic Robotic</title>
+  <link rel="stylesheet" href="./css/proveedor.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="./js/login.js"></script> 
+  <script src="./js/proveedor.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <img src="../assets/img/logo.png" alt="Logo">
+      <span>A&R</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="aboutView.html">Sobre Nosotros</a>
+      <a href="casosExito.html">Casos de Éxito</a>
+      <a href="aliados.html">Centros de Aliados</a>
+    </div>
+    <div class="nav-right">
+      <a href="loginView.html" class="login-btn">Iniciar Sesión</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h1>Convocatorias para Proveedores</h1>
+    <p>Encuentra oportunidades para ofrecer tus productos y servicios</p>
+  </section>
+
+  <section class="convocatorias">
+    <h2>Convocatorias Activas</h2>
+    <div class="convocatorias-container">
+      <p class="no-convocatorias">Actualmente no hay convocatorias disponibles.</p>
+    </div>
+  </section>
+
+  <!-- Modal Formulario -->
+  <div id="formModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="cerrarModal()">&times;</span>
+      <h2>Formulario de Postulación</h2>
+
+      <form id="formPostulacion" onsubmit="enviarFormulario(event)">
+        <h3>Datos del Proveedor</h3>
+        <input type="text" placeholder="Nombre del proveedor o empresa" required>
+        <input type="text" placeholder="NIT o RUT" required>
+        <input type="email" placeholder="Correo electrónico" required>
+        <input type="tel" placeholder="Teléfono" required>
+        <input type="text" placeholder="Sitio web (opcional)">
+
+        <h3>Datos de la Propuesta</h3>
+        <textarea placeholder="¿Qué ofreces exactamente?" required></textarea>
+        <input type="text" placeholder="Precio estimado (opcional)">
+        <input type="text" placeholder="Tiempo de entrega estimado" required>
+        <textarea placeholder="Experiencia previa (opcional)"></textarea>
+        <label class="file-label">
+          Adjuntar documentos:
+          <input type="file" multiple accept=".pdf,.doc,.docx,.png,.jpg">
+        </label>
+
+        <div class="form-buttons">
+          <button type="button" class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
+          <button type="submit" class="btn-enviar">Enviar Postulación</button>
+        </div>
+      </form>
+
+      <div id="confirmacion" class="confirmacion">
+        <h3>✓ Tu postulación ha sido enviada exitosamente</h3>
+        <p>La empresa se pondrá en contacto contigo al correo proporcionado.</p>
+        <p>Número de seguimiento: <strong id="numSeguimiento"></strong></p>
+        <button onclick="cerrarModal()">Volver a convocatorias</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 J&C Automatic Robotic - Todos los derechos reservados</p>
+  </footer>
+
+  <script>
+    const modal = document.getElementById("formModal");
+    const confirmacion = document.getElementById("confirmacion");
+    const form = document.getElementById("formPostulacion");
+
+    function abrirModal() {
+      modal.style.display = "block";
+      confirmacion.style.display = "none";
+      form.style.display = "block";
+    }
+
+    function cerrarModal() {
+      modal.style.display = "none";
+    }
+
+    function enviarFormulario(e) {
+      e.preventDefault();
+      const numero = Math.floor(10000 + Math.random() * 90000);
+      document.getElementById("numSeguimiento").innerText = `#${numero}`;
+      form.style.display = "none";
+      confirmacion.style.display = "block";
+    }
+
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+  </script>
+</body>
+</html>
