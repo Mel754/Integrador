@@ -1,24 +1,50 @@
 // server.js
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-
-const securityRoutes = require('./routes/security');
+const express = require("express");
+const cors = require("cors");
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(express.static('public'));
-// Rutas
-app.use('/security', securityRoutes);
+app.use(express.json());
 
-app.get('/', (req, res) => res.json({ message: 'mi-backend API funcionando' }));
+// 🔁 Proxy hacia la API REAL de la UPB
+app.use(
+  "/login",
+  createProxyMiddleware({
+    target: "http://tgi-ptu.bucaramanga.upb.edu.co:3000",
+    changeOrigin: true,
+  })
+);
+
+// ✅ RUTAS DE POSTULACIONES
+app.post('/api/postulaciones', (req, res) => {
+  try {
+    const datos = req.body;
+    
+    console.log('📝 Postulación recibida:', datos);
+    
+    // Aquí puedes guardar en base de datos
+    // await Postulacion.create(datos);
+    
+    res.json({ 
+      id: Date.now(),
+      mensaje: 'Postulación guardada exitosamente',
+      datos: datos
+    });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ 
+      mensaje: 'Error al procesar la postulación',
+      error: error.message 
+    });
+  }
+});
+
+// Servir tu frontend (opcional)
+app.use(express.static("Website/views"));
 
 app.listen(PORT, () => {
-  console.log(`✅ mi-backend corriendo en http://localhost:${PORT}`);
+  console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
 });
-const permissionsRoutes = require('./routes/permissions');
-app.use('/permissions', permissionsRoutes);
