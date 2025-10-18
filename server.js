@@ -1,50 +1,74 @@
-// server.js
-const express = require("express");
-const cors = require("cors");
-const { createProxyMiddleware } = require("http-proxy-middleware");
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
 
 const app = express();
-const PORT = 3000;
 
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  credentials: true
+}));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// 🔁 Proxy hacia la API REAL de la UPB
-app.use(
-  "/login",
-  createProxyMiddleware({
-    target: "http://tgi-ptu.bucaramanga.upb.edu.co:3000",
-    changeOrigin: true,
-  })
-);
+const authRoutes = require('./routes/auth');
+const permissionsRoutes = require('./routes/permissions');
+const postulacionesRoutes = require('./routes/postulaciones');
+const securityRoutes = require('./routes/security');
+const proyectosRoutes = require('./routes/proyectos');
 
-// ✅ RUTAS DE POSTULACIONES
-app.post('/api/postulaciones', (req, res) => {
-  try {
-    const datos = req.body;
-    
-    console.log('📝 Postulación recibida:', datos);
-    
-    // Aquí puedes guardar en base de datos
-    // await Postulacion.create(datos);
-    
-    res.json({ 
-      id: Date.now(),
-      mensaje: 'Postulación guardada exitosamente',
-      datos: datos
-    });
-  } catch (error) {
-    console.error('Error:', error);
-    res.status(500).json({ 
-      mensaje: 'Error al procesar la postulación',
-      error: error.message 
-    });
-  }
+app.use('/api/auth', authRoutes);
+app.use('/api/permissions', permissionsRoutes);
+app.use('/api/postulaciones', postulacionesRoutes);
+app.use('/api/security', securityRoutes);
+app.use('/api/proyectos', proyectosRoutes);
+
+app.get('/', (req, res) => {
+  res.json({
+    mensaje: 'API de J&C Automatic Robotic',
+    version: '1.0.0',
+    endpoints: {
+      auth: '/api/auth',
+      permissions: '/api/permissions',
+      postulaciones: '/api/postulaciones',
+      security: '/api/security',
+      proyectos: '/api/proyectos'
+    }
+  });
 });
 
-// Servir tu frontend (opcional)
-app.use(express.static("Website/views"));
+app.get('/api/salud', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    mensaje: 'Servidor funcionando correctamente',
+    timestamp: new Date()
+  });
+});
 
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({
+    success: false,
+    mensaje: 'Error interno del servidor',
+    error: process.env.NODE_ENV === 'development' ? err.message : 'Error desconocido'
+  });
+});
+
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    mensaje: 'Ruta no encontrada'
+  });
+});
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`
+
+  🚀 J&C Automatic Robotic API         
+  Servidor ejecutándose en puerto ${PORT}    
+  URL: http://tgi-ptu.bucaramanga.upb.edu.co:${PORT}
+
+  `);
 });
