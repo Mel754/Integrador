@@ -1,0 +1,278 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f2f6fa;
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======== NAVBAR ======== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e9f0fa;
+  padding: 10px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  color: #000;
+}
+
+.logo img {
+  width: 35px;
+  margin-right: 8px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  background-color: #f4f6fa;
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background-color: #243b6b;
+  color: white;
+}
+
+.nav-links a.active {
+  background-color: #40444b;
+  color: white;
+}
+
+.login-btn {
+  background-color: #2a497d;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #1b3258;
+}
+
+/* ======== HERO ======== */
+.hero {
+  background-color: #243b6b;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+/* ======== CONVOCATORIAS ======== */
+.convocatorias {
+  background-color: #eef4fb;
+  padding: 40px 60px;
+  flex: 1;
+}
+
+.convocatorias h2 {
+  color: #1e3a8a;
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.convocatorias-container {
+  background-color: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.no-convocatorias {
+  color: #555;
+  font-size: 15px;
+}
+
+/* ======== MODAL ======== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 85%;
+  max-width: 700px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  animation: fadeIn 0.4s ease;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 26px;
+  font-weight: bold;
+  color: #1e3a8a;
+  cursor: pointer;
+}
+
+/* ======== FORMULARIO ======== */
+form {
+  text-align: left;
+  margin-top: 10px;
+}
+
+form h3 {
+  color: #1e3a8a;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.3s;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #1e3a8a;
+  box-shadow: 0 0 5px rgba(30, 58, 138, 0.3);
+}
+
+form label.file-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-enviar {
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-enviar:hover {
+  background-color: #3b82f6;
+}
+
+.btn-cancelar {
+  background-color: #e5e7eb;
+  color: #111;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-cancelar:hover {
+  background-color: #d1d5db;
+}
+
+/* ======== CONFIRMACIÓN ======== */
+.confirmacion {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.confirmacion h3 {
+  color: #16a34a;
+  margin-bottom: 10px;
+}
+
+.confirmacion p {
+  font-size: 14px;
+  color: #444;
+}
+
+.confirmacion .tracking {
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.confirmacion button {
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.confirmacion button:hover {
+  background-color: #3b82f6;
+}
+
+/* ======== FOOTER ======== */
+footer {
+  background-color: #243b6b;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  margin-top: auto;
+}
+
+/* ======== ANIMACIÓN ======== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

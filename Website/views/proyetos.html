@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyectos | J&C Automatic Robotic</title>
+  <link rel="stylesheet" href="./css/proyetos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="./js/proyetos.js"></script>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="../assets/img/logo.png" alt="Logo">
+      <span>A&R</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="aboutView.html">Sobre Nosotros</a>
+      <a href="casosExito.html">Casos de Éxito</a>
+      <a href="aliados.html">Centros de Aliados</a>
+    </div>
+    <div class="nav-right">
+      <a href="loginView.html" class="login-btn">Iniciar Sesión</a>
+    </div>
+  </nav>
+
+  <div class="proyectos-page">
+    <div class="hero-section">
+      <h1>Nuestros Proyectos</h1>
+      <p>Descubre los proyectos de automatización y robótica que impulsan la innovación en las empresas</p>
+    </div>
+
+    <div class="filters-section">
+      <div class="filters-container">
+        <div class="filters-grid">
+          <select>
+            <option>Todos los sectores</option>
+            <option>Robótica Industrial</option>
+            <option>Automatización</option>
+            <option>Industria 4.0</option>
+            <option>IoT</option>
+          </select>
+          <select>
+            <option>Todos los estados</option>
+            <option>Activos</option>
+            <option>Completados</option>
+            <option>En desarrollo</option>
+          </select>
+          <select>
+            <option>Todos los departamentos</option>
+            <option>Santander</option>
+            <option>Antioquia</option>
+            <option>Bogotá</option>
+            <option>Valle del Cauca</option>
+          </select>
+          <select>
+            <option>Todos los años</option>
+            <option>2025</option>
+            <option>2024</option>
+            <option>2023</option>
+          </select>
+        </div>
+        <div class="filters-buttons">
+          <button class="btn-state">Filtrar</button>
+          <button class="btn-search">Buscar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="proyectos-section">
+      <div class="proyectos-grid" id="proyectosGrid">
+        <!-- Proyecto 1 -->
+        <div class="proyecto-card">
+          <div class="card-image">
+            <img src="../assets/img/proyecto1.jpg" alt="Robótica Colaborativa">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Implementación de Brazos Robóticos Colaborativos</h3>
+            <div class="card-info">📅 Año: 2025</div>
+            <div class="card-info">📍 Sector: Robótica Colaborativa</div>
+            <div class="card-info">🏢 Departamento: Santander</div>
+            <p class="card-description">Instalación de brazos robóticos colaborativos para aumentar la productividad y seguridad en líneas de manufactura.</p>
+            <button class="card-button" onclick="abrirDetalles(1)">Ver más</button>
+          </div>
+        </div>
+
+        <!-- Proyecto 2 -->
+        <div class="proyecto-card">
+          <div class="card-image">
+            <img src="../assets/img/proyecto2.jpg" alt="Automatización Inteligente">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Sistema de Automatización Inteligente para Logística</h3>
+            <div class="card-info">📅 Año: 2025</div>
+            <div class="card-info">📍 Sector: Logística y Distribución</div>
+            <div class="card-info">🏢 Departamento: Antioquia</div>
+            <p class="card-description">Desarrollo de soluciones de automatización inteligente para optimizar procesos de distribución y almacenamiento.</p>
+            <button class="card-button" onclick="abrirDetalles(2)">Ver más</button>
+          </div>
+        </div>
+
+        <!-- Proyecto 3 -->
+        <div class="proyecto-card">
+          <div class="card-image">
+            <img src="../assets/img/proyecto3.jpg" alt="IoT Industrial">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Plataforma de IoT Industrial para Monitoreo</h3>
+            <div class="card-info">📅 Año: 2026</div>
+            <div class="card-info">📍 Sector: Industria 4.0</div>
+            <div class="card-info">🏢 Departamento: Bogotá</div>
+            <p class="card-description">Plataforma integrada para monitoreo en tiempo real de máquinas y procesos industriales con inteligencia artificial.</p>
+            <button class="card-button" onclick="abrirDetalles(3)">Ver más</button>
+          </div>
+        </div>
+
+        <!-- Proyecto 4 -->
+        <div class="proyecto-card">
+          <div class="card-image">
+            <img src="../assets/img/proyecto4.jpg" alt="Control Automatizado">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Sistema de Control Automatizado para Manufactura</h3>
+            <div class="card-info">📅 Año: 2026</div>
+            <div class="card-info">📍 Sector: Manufactura</div>
+            <div class="card-info">🏢 Departamento: Valle del Cauca</div>
+            <p class="card-description">Implementación de sistemas de control automático para optimizar producción y reducir costos operacionales.</p>
+            <button class="card-button" onclick="abrirDetalles(4)">Ver más</button>
+          </div>
+        </div>
+
+        <!-- Proyecto 5 -->
+        <div class="proyecto-card">
+          <div class="card-image">
+            <img src="../assets/img/proyecto5.jpg" alt="Visión Artificial">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Sistema de Visión Artificial para Control de Calidad</h3>
+            <div class="card-info">📅 Año: 2026</div>
+            <div class="card-info">📍 Sector: Control de Calidad</div>
+            <div class="card-info">🏢 Departamento: Santander</div>
+            <p class="card-description">Desarrollo de soluciones de visión artificial para inspección automática de productos y control de calidad.</p>
+            <button class="card-button" onclick="abrirDetalles(5)">Ver más</button>
+          </div>
+        </div>
+
+        <!-- Proyecto 6 -->
+        <div class="proyecto-card">
+          <div class="card-image">
+            <img src="../assets/img/proyecto6.jpg" alt="Automatización de Procesos">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Automatización de Procesos de Empaque y Etiquetado</h3>
+            <div class="card-info">📅 Año: 2026</div>
+            <div class="card-info">📍 Sector: Empaque</div>
+            <div class="card-info">🏢 Departamento: Antioquia</div>
+            <p class="card-description">Sistema integrado de automatización para empaque y etiquetado automático con alta precisión y velocidad.</p>
+            <button class="card-button" onclick="abrirDetalles(6)">Ver más</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Detalles Proyecto -->
+    <div id="detallesModal" class="modal">
+      <div class="modal-content-detalles">
+        <span class="close" onclick="cerrarDetalles()">&times;</span>
+        <div id="detallesContenido">
+          <!-- Los detalles se cargarán aquí -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>📍 Ubicación</h4>
+        <p>Bucaramanga, Santander</p>
+        <p>Colombia</p>
+      </div>
+      <div class="footer-section">
+        <h4>📧 Contacto</h4>
+        <p>info@jcautomatizacion.com</p>
+        <p>+57 300 123 4567</p>
+      </div>
+      <div class="footer-section">
+        <h4>⏰ Horarios</h4>
+        <p>Lunes - Viernes: 8:00 AM - 6:00 PM</p>
+        <p>Sábados: 9:00 AM - 2:00 PM</p>
+      </div>
+      <div class="footer-section">
+        <h4>🌐 Síguenos</h4>
+        <p>@JCAutomatizacion</p>
+        <p>LinkedIn | Twitter | Instagram</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 J&C Automatizacion. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

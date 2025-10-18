@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Proyecto | J&C Automatic Robotic</title>
+  <link rel="stylesheet" href="./css/crear-proyecto.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="./js/crear-proyecto.js"></script>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="../assets/img/logo.png" alt="Logo">
+      <span>A&R</span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="aboutView.html">Sobre Nosotros</a>
+      <a href="casosExito.html">Casos de Éxito</a>
+      <a href="aliados.html">Centros de Aliados</a>
+    </div>
+    <div class="nav-right">
+      <a href="loginView.html" class="login-btn">Iniciar Sesión</a>
+    </div>
+  </nav>
+
+  <div class="crear-proyecto-page">
+    <div class="hero-section">
+      <h1>Crear Nuevo Proyecto</h1>
+      <p>Comparte tu idea de automatización y robótica con nosotros</p>
+    </div>
+
+    <div class="form-section">
+      <div class="form-container">
+        <h2>Formulario de Propuesta de Proyecto</h2>
+        <p class="form-description">Completa todos los campos para enviar tu propuesta. Nuestro equipo de J&C Automatic Robotic la revisará y te contactará pronto.</p>
+
+        <form id="formularioProyecto" class="proyecto-form">
+          
+          <!-- Información del Proyecto -->
+          <fieldset class="form-fieldset">
+            <legend>📋 Información del Proyecto</legend>
+
+            <div class="form-group">
+              <label for="nombreProyecto">Nombre del Proyecto *</label>
+              <input type="text" id="nombreProyecto" name="nombreProyecto" required placeholder="Ej: Automatización de línea de producción">
+            </div>
+
+            <div class="form-group">
+              <label for="descripcionProyecto">Descripción del Proyecto *</label>
+              <textarea id="descripcionProyecto" name="descripcionProyecto" rows="5" required placeholder="Describe detalladamente tu proyecto..."></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="sector">Sector *</label>
+                <select id="sector" name="sector" required>
+                  <option value="">Selecciona un sector</option>
+                  <option value="Robótica Industrial">Robótica Industrial</option>
+                  <option value="Automatización">Automatización</option>
+                  <option value="Logística">Logística</option>
+                  <option value="Manufactura">Manufactura</option>
+                  <option value="Industria 4.0">Industria 4.0</option>
+                  <option value="Control de Calidad">Control de Calidad</option>
+                  <option value="Otros">Otros</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="estado">Estado del Proyecto *</label>
+                <select id="estado" name="estado" required>
+                  <option value="">Selecciona un estado</option>
+                  <option value="Idea">Idea</option>
+                  <option value="En Desarrollo">En Desarrollo</option>
+                  <option value="Listo para Implementar">Listo para Implementar</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="presupuesto">Presupuesto Estimado (COP) *</label>
+                <input type="number" id="presupuesto" name="presupuesto" required placeholder="Ej: 5000000">
+              </div>
+
+              <div class="form-group">
+                <label for="plazo">Plazo Estimado (meses) *</label>
+                <input type="number" id="plazo" name="plazo" required placeholder="Ej: 12">
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Tecnologías -->
+          <fieldset class="form-fieldset">
+            <legend>🔧 Tecnologías Involucradas</legend>
+
+            <div class="form-group">
+              <label for="tecnologias">Tecnologías a utilizar *</label>
+              <textarea id="tecnologias" name="tecnologias" rows="3" required placeholder="Ej: PLC, SCADA, Robótica colaborativa, IoT..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="objetivos">Objetivos del Proyecto *</label>
+              <textarea id="objetivos" name="objetivos" rows="3" required placeholder="¿Qué esperas lograr con este proyecto?"></textarea>
+            </div>
+          </fieldset>
+
+          <!-- Información del Solicitante -->
+          <fieldset class="form-fieldset">
+            <legend>👤 Información del Solicitante</legend>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombreSolicitante">Nombre Completo *</label>
+                <input type="text" id="nombreSolicitante" name="nombreSolicitante" required placeholder="Tu nombre">
+              </div>
+
+              <div class="form-group">
+                <label for="emailSolicitante">Correo Electrónico *</label>
+                <input type="email" id="emailSolicitante" name="emailSolicitante" required placeholder="tu@email.com">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telefonoSolicitante">Teléfono *</label>
+                <input type="tel" id="telefonoSolicitante" name="telefonoSolicitante" required placeholder="+57 300 123 4567">
+              </div>
+
+              <div class="form-group">
+                <label for="empresa">Empresa/Organización *</label>
+                <input type="text" id="empresa" name="empresa" required placeholder="Nombre de tu empresa">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cargo">Cargo/Posición *</label>
+              <input type="text" id="cargo" name="cargo" required placeholder="Tu cargo en la empresa">
+            </div>
+
+            <div class="form-group">
+              <label for="departamento">Departamento/Región *</label>
+              <select id="departamento" name="departamento" required>
+                <option value="">Selecciona un departamento</option>
+                <option value="Santander">Santander</option>
+                <option value="Antioquia">Antioquia</option>
+                <option value="Bogotá">Bogotá</option>
+                <option value="Valle del Cauca">Valle del Cauca</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <!-- Términos y Condiciones -->
+          <fieldset class="form-fieldset">
+            <legend>⚖️ Términos y Condiciones</legend>
+
+            <div class="form-group checkbox">
+              <input type="checkbox" id="terminos" name="terminos" required>
+              <label for="terminos">Acepto los términos y condiciones y autorizo que J&C Automatic Robotic revise mi propuesta *</label>
+            </div>
+
+            <div class="form-group checkbox">
+              <input type="checkbox" id="privacidad" name="privacidad" required>
+              <label for="privacidad">Acepto la política de privacidad y protección de datos *</label>
+            </div>
+          </fieldset>
+
+          <!-- Botones -->
+          <div class="form-actions">
+            <button type="reset" class="btn-cancel">Limpiar Formulario</button>
+            <button type="submit" class="btn-submit">Enviar Propuesta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal de Éxito -->
+    <div id="modalExito" class="modal">
+      <div class="modal-content-exito">
+        <div class="success-icon">✓</div>
+        <h2>¡Proyecto Enviado Exitosamente!</h2>
+        <p class="success-message">Tu propuesta ha sido recibida correctamente.</p>
+        
+        <div class="success-details">
+          <div class="detail-item">
+            <span class="detail-icon">📋</span>
+            <div class="detail-text">
+              <h4>Propuesta en Revisión</h4>
+              <p>Tu proyecto será revisado por nuestro equipo de J&C Automatic Robotic</p>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon">⏱️</span>
+            <div class="detail-text">
+              <h4>Tiempo de Revisión</h4>
+              <p>Nos comunicaremos contigo en un plazo de 5 a 7 días hábiles</p>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon">📧</span>
+            <div class="detail-text">
+              <h4>Mantente Atento</h4>
+              <p>Revisa tu correo electrónico regularmente para recibir actualizaciones</p>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <span class="detail-icon">✅</span>
+            <div class="detail-text">
+              <h4>Aprobación</h4>
+              <p>Si tu proyecto es aprobado, te contactaremos para los próximos pasos</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="success-note">
+          <strong>📌 Nota Importante:</strong> Nuestro equipo evaluará tu propuesta considerando viabilidad técnica, impacto innovador y alineación con nuestros objetivos.
+        </div>
+
+        <button class="btn-close-modal" onclick="cerrarModalExito()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>📍 Ubicación</h4>
+        <p>Bucaramanga, Santander</p>
+        <p>Colombia</p>
+      </div>
+      <div class="footer-section">
+        <h4>📧 Contacto</h4>
+        <p>info@jcautomatizacion.com</p>
+        <p>+57 300 123 4567</p>
+      </div>
+      <div class="footer-section">
+        <h4>⏰ Horarios</h4>
+        <p>Lunes - Viernes: 8:00 AM - 6:00 PM</p>
+        <p>Sábados: 9:00 AM - 2:00 PM</p>
+      </div>
+      <div class="footer-section">
+        <h4>🌐 Síguenos</h4>
+        <p>@JCAutomatizacion</p>
+        <p>LinkedIn | Twitter | Instagram</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 J&C Automatizacion. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
