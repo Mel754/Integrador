@@ -35,7 +35,28 @@ exports.renderActaPdf = async (req, res, next) => {
   } catch (e) { next(e); }
 };
 
+const { sendMail } = require('../mailer'); 
 
+exports.distribuirActa = async (req, res, next) => {
+  try {
+    const { meeting_id } = req.params;
+    const attachments = [
+      { filename: `acta-${meeting_id}.pdf`, content: pdf },
+      { filename: `reunion-${meeting_id}.ics`, content: ics, contentType: 'text/calendar' }
+    ];
+    for (const p of participantes) {
+      await sendMail({
+        to: p.email,
+        subject: `Acta y cita – ${meeting.titulo}`,
+        html: `<p>Hola ${p.nombre || ''},<br>Adjuntamos el acta y la invitación.</p>`,
+        attachments
+      });
+    }
+    res.json({ ok: true, enviados: participantes.length });
+  } catch (e) { next(e); }
+};
+
+  
 for (const a of acta.acuerdos) {
   await pool.query(
     'INSERT INTO tareas (meeting_id, titulo, descripcion, responsable_email, fecha_vencimiento) VALUES (?,?,?,?,?)',
