@@ -24,6 +24,7 @@ app.use('/api/postulaciones', postulacionesRoutes);
 app.use('/api/security', securityRoutes);
 app.use('/api/proyectos', proyectosRoutes);
 app.use('/api/calendar', require('./routes/calendar'));
+app.use('/api/actas', require('./routes/actas'));
 
 app.get('/', (req, res) => {
   res.json({
