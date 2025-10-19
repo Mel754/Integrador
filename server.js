@@ -23,6 +23,7 @@ app.use('/api/permissions', permissionsRoutes);
 app.use('/api/postulaciones', postulacionesRoutes);
 app.use('/api/security', securityRoutes);
 app.use('/api/proyectos', proyectosRoutes);
+app.use('/api/calendar', require('./routes/calendar'));
 
 app.get('/', (req, res) => {
   res.json({
