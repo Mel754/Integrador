@@ -5,6 +5,9 @@ const body = {
   contactoNombre: document.getElementById('contactoNombre')?.value,
   contactoEmail: document.getElementById('contactoEmail')?.value,
   autoReunion: document.getElementById('autoReunion').checked
+  nombreProveedor: document.getElementById('nombreProveedor')?.value,
+  emailProveedor: document.getElementById('emailProveedor')?.value,
+  autoReunion: document.getElementById('autoReunionProv').checked
 };
 
 const ri = document.getElementById('reunionInicio')?.value;
