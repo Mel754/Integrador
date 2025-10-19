@@ -56,6 +56,40 @@ async function obtenerProyectoPorId(req, res) {
   }
 }
 
+
+const {
+  participantesDesdeProyecto,
+  registrarEnProyecto,
+  crearReunionYAgregar
+} = require('../services/servicioParticipantes');
+
+const projectId = resultado.insertId; 
+
+const participantes = participantesDesdeProyecto(req.body);
+
+if (participantes.length) {
+  await registrarEnProyecto(projectId, participantes);
+}
+
+if (req.body.autoReunion === true || req.body.autoReunion === 'true') {
+
+  const ahora = new Date();
+  const inicio = req.body.reunionInicio || new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate()+1, 9, 0, 0);
+  const fin    = req.body.reunionFin    || new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate()+1, 10, 0, 0);
+
+  const meetingId = await crearReunionYAgregar({
+    titulo: `Kickoff Proyecto #${projectId}`,
+    descripcion: req.body.descripcion || '',
+    inicio,
+    fin,
+    lugar: req.body.lugar || 'Virtual',
+    creadoPor: req.user?.id || null,
+    participantes
+  });
+
+}
+
+
 // Crear nuevo proyecto
 async function crearProyecto(req, res) {
   try {
@@ -323,4 +357,5 @@ module.exports = {
   obtenerProyectosPorSector,
   obtenerProyectosEnRevision,
   actualizarRevision
+
 };
