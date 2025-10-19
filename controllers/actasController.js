@@ -22,6 +22,19 @@ exports.renderActaHtml = async (req, res, next) => {
     res.type('html').send(html);
   } catch (e) { next(e); }
 
+  const { htmlToPdf } = require('../services/pdfService');
+
+exports.renderActaPdf = async (req, res, next) => {
+  try {
+   
+    const html = ;
+    const pdf = await htmlToPdf(html);
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename=acta.pdf');
+    res.send(pdf);
+  } catch (e) { next(e); }
+};
+
 
 for (const a of acta.acuerdos) {
   await pool.query(
