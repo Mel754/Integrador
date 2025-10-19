@@ -21,4 +21,14 @@ exports.renderActaHtml = async (req, res, next) => {
     const html = ejs.render(tpl, { meeting, participantes, acta });
     res.type('html').send(html);
   } catch (e) { next(e); }
+
+
+for (const a of acta.acuerdos) {
+  await pool.query(
+    'INSERT INTO tareas (meeting_id, titulo, descripcion, responsable_email, fecha_vencimiento) VALUES (?,?,?,?,?)',
+    [meeting_id, a.descripcion, a.descripcion, a.responsable, a.vencimiento]
+  );
+}
+
+  
 };
