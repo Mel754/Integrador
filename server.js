@@ -63,6 +63,14 @@ app.use((req, res) => {
     success: false,
     mensaje: 'Ruta no encontrada'
   });
+
+app.enable('trust proxy');
+app.use((req, res, next) => {
+  if (req.secure) return next();
+  return res.redirect(`https://${req.headers.host}${req.url}`);
+});
+
+  
 });
 
 const PORT = process.env.PORT || 3000;
