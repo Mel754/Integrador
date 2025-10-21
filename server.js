@@ -2,7 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-const sqlInjectionGuard = require('./middleware/sql-injection-guard'); // ← NUEVO
+const sqlInjectionGuard = require('./middleware/sql-injection-guard');
+const { auditMiddleware } = require('./middleware/audit-logger'); 
+const { logger } = require('./utils/logger'); 
 
 const app = express();
 
@@ -14,15 +16,16 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ NUEVO: Protección SQL Injection (DEBE IR AQUÍ, después de parsear JSON)
 app.use(sqlInjectionGuard);
 
-// Rutas existentes (NO CAMBIAR)
+app.use(auditMiddleware);
+
 const authRoutes = require('./routes/auth');
 const permissionsRoutes = require('./routes/permissions');
 const postulacionesRoutes = require('./routes/postulaciones');
 const securityRoutes = require('./routes/security');
 const proyectosRoutes = require('./routes/proyectos');
+const auditRoutes = require('./routes/audit'); 
 
 app.use('/api/auth', authRoutes);
 app.use('/api/permissions', permissionsRoutes);
@@ -32,6 +35,7 @@ app.use('/api/proyectos', proyectosRoutes);
 app.use('/api/calendar', require('./routes/calendar'));
 app.use('/api/actas', require('./routes/actas'));
 app.use('/api/dashboard', require('./routes/dashboard'));
+app.use('/api/audit', auditRoutes); 
 
 app.get('/', (req, res) => {
   res.json({
@@ -42,7 +46,8 @@ app.get('/', (req, res) => {
       permissions: '/api/permissions',
       postulaciones: '/api/postulaciones',
       security: '/api/security',
-      proyectos: '/api/proyectos'
+      proyectos: '/api/proyectos',
+      audit: '/api/audit' 
     }
   });
 });
@@ -55,9 +60,8 @@ app.get('/api/salud', (req, res) => {
   });
 });
 
-// Manejo de errores
 app.use((err, req, res, next) => {
-  console.error('Error:', err);
+  logger.error('Error del servidor:', err); 
   res.status(500).json({
     success: false,
     mensaje: 'Error interno del servidor',
@@ -75,7 +79,6 @@ app.use((req, res) => {
 
 app.enable('trust proxy');
 
-// Redirect HTTP a HTTPS (si aplica)
 app.use((req, res, next) => {
   if (req.secure) return next();
   return res.redirect(`https://${req.headers.host}${req.url}`);
@@ -83,9 +86,11 @@ app.use((req, res, next) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
+  logger.info(`Servidor iniciado en puerto ${PORT}`); 
   console.log(`
   🚀 J&C Automatic Robotic API         
   🔒 Protección SQL Injection activada
+  📋 Sistema de auditoría activado
   Servidor ejecutándose en puerto ${PORT}    
   URL: http://tgi-ptu.bucaramanga.upb.edu.co:${PORT}
   `);
