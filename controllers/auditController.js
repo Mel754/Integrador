@@ -14,7 +14,7 @@ async function getLogs(req, res) {
       pagina = 1      
     } = req.query;
 
-    const logFilePath = path.join(__dirname, '../logs/audit.log');
+    const logFilePath = path.join(__dirname, './logs/audit.log');
 
     if (!fs.existsSync(logFilePath)) {
       return res.status(404).json({
@@ -254,4 +254,5 @@ module.exports = {
   getLogs,
   getAuditStats,
   exportLogs
+
 };
