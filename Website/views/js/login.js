@@ -6,7 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("❌ No se encontró el formulario con id='loginForm'");
     return;
   }
-
+if (respuesta.error) {
+  await fetch('/api/seguridad/login-fallido', {
+    method: 'POST',
+    body: JSON.stringify({ email }),
+  });
+}
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -36,3 +41,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
