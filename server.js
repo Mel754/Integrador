@@ -17,7 +17,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(sqlInjectionGuard);
-
+app.use((err, req, res, next) => {
+  require('./controllers/seguridadController').atencionError(err);
+  res.status(500).json({ message: 'Error del servidor' });
+});
 app.use(auditMiddleware);
 
 const authRoutes = require('./routes/auth');
